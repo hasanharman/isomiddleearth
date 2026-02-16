@@ -1,7 +1,7 @@
 <div align="center">
-  <img src="[logo.png](https://github.com/hasanharman/isoshire/blob/main/public/logo.png)" alt="IsoShire Logo" width="180" />
-  <h1>Isoshire</h1>
-  <p><strong>An isometric Shire builder — craft your own corner of Middle-earth, tile by tile.</strong></p>
+  <img src="[logo.png](https://github.com/hasanharman/iso-middle-earth/blob/main/public/logo.png)" alt="Iso Middle Earth Logo" width="180" />
+  <h1>Iso Middle Earth</h1>
+  <p><strong>An isometric Middle-earth builder — craft your own realm, tile by tile.</strong></p>
 
   <p>
     <a href="#features">Features</a> •
@@ -18,7 +18,7 @@
     <img src="https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white" alt="React" />
     <img src="https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white" alt="TypeScript" />
     <img src="https://img.shields.io/badge/pnpm-latest-F69220?logo=pnpm&logoColor=white" alt="pnpm" />
-    <img src="https://img.shields.io/github/license/YOUR_USERNAME/isoshire" alt="License" />
+    <img src="https://img.shields.io/github/license/YOUR_USERNAME/iso-middle-earth" alt="License" />
   </p>
 </div>
 
@@ -27,9 +27,9 @@
 ## Demo
 
 <!-- Replace with your own screenshot or GIF -->
-![IsoShire Screenshot](screenshot.png)
+![Iso Middle Earth Screenshot](screenshot.png)
 
-> 🌐 **Live:** [isoshire.vercel.app](https://isoshire.vercel.app) *(update with your URL)*
+> 🌐 **Live:** [iso-middle-earth.vercel.app](https://iso-middle-earth.vercel.app) *(update with your URL)*
 
 ---
 
@@ -39,7 +39,7 @@
 |---|---|
 | 🗺️ **Isometric Canvas** | Place tiles on a beautiful isometric grid with hover preview |
 | 📐 **Adjustable Grid Size** | Resize from 3×3 up to 20×20 via a slider |
-| 🎨 **72 Themed Tiles** | 6 groups — Terrain, Water & Bridges, Trees, Hobbit Holes, Buildings, Decorations |
+| 🎨 **72 Themed Tiles** | 6 groups — Terrain, Water & Bridges, Trees & Vegetation, Dwellings, Buildings, Decorations |
 | 💾 **Save & Load** | Persist your builds to localStorage via Zustand — name, save, and restore anytime |
 | 📸 **Export as PNG** | One-click download of your creation as a clean PNG image |
 | 🖱️ **Click & Drag** | Paint tiles by holding the mouse — right-click to erase |
@@ -58,8 +58,8 @@
 
 ```bash
 # Clone the repo
-git clone https://github.com/YOUR_USERNAME/isoshire.git
-cd isoshire
+git clone https://github.com/YOUR_USERNAME/iso-middle-earth.git
+cd iso-middle-earth
 
 # Install dependencies
 pnpm install

@@ -3,8 +3,8 @@ import "./globals.css";
 import { inter } from "./fonts";
 
 export const metadata: Metadata = {
-  title: "Isoshire — Isometric Shire Builder",
-  description: "Build your own isometric Shire",
+  title: "Iso Middle Earth — Isometric Realm Builder",
+  description: "Build your own isometric realm in Middle-earth",
 };
 
 export default function RootLayout({

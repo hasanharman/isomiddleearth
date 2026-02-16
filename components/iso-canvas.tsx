@@ -3,12 +3,16 @@
 import { useCallback, useEffect, useRef } from "react";
 import { useMapStore } from "@/lib/store";
 import { SPRITE_TILE_H, SPRITE_TILE_W } from "@/lib/tiles";
-import { getTexturePath } from "@/lib/textures";
+import {
+  getTexturePath,
+  MIXED_TEXTURE_PLACE_ID,
+  TEXTURE_PLACES,
+} from "@/lib/textures";
 
 export default function IsoCanvas() {
   const bgRef = useRef<HTMLCanvasElement>(null);
   const fgRef = useRef<HTMLCanvasElement>(null);
-  const textureRef = useRef<HTMLImageElement | null>(null);
+  const textureCacheRef = useRef<Map<string, HTMLImageElement>>(new Map());
   const isPlacingRef = useRef(false);
 
   const { map, gridSize, activeTool, setTile, clearTile, location } =
@@ -53,8 +57,13 @@ export default function IsoCanvas() {
       y: number,
       row: number,
       col: number,
+      tileRealm?: string,
     ) => {
-      if (!textureRef.current) return;
+      const texturePlace =
+        location === MIXED_TEXTURE_PLACE_ID ? tileRealm ?? TEXTURE_PLACES[0].id : location;
+      const texturePath = getTexturePath(texturePlace);
+      const texture = textureCacheRef.current.get(texturePath);
+      if (!texture) return;
       ctx.save();
       ctx.translate(
         originX + (y - x) * (tileWidth / 2),
@@ -63,7 +72,7 @@ export default function IsoCanvas() {
       const sx = col * SPRITE_TILE_W;
       const sy = row * SPRITE_TILE_H;
       ctx.drawImage(
-        textureRef.current,
+        texture,
         sx,
         sy,
         SPRITE_TILE_W,
@@ -75,36 +84,60 @@ export default function IsoCanvas() {
       );
       ctx.restore();
     },
-    [originX, originY, tileWidth, tileHeight],
+    [location, originX, originY, tileWidth, tileHeight],
   );
 
   const drawMap = useCallback(() => {
     const bg = bgRef.current?.getContext("2d");
-    if (!bg || !textureRef.current) return;
+    if (!bg) return;
     bg.clearRect(0, 0, canvasWidth, canvasHeight);
     for (let i = 0; i < gridSize; i++) {
       for (let j = 0; j < gridSize; j++) {
-        drawImageTile(bg, i, j, map[i][j][0], map[i][j][1]);
+        drawImageTile(bg, i, j, map[i][j][0], map[i][j][1], map[i][j][2]);
       }
     }
   }, [map, gridSize, canvasWidth, canvasHeight, drawImageTile]);
 
   // Load texture
   useEffect(() => {
-    const img = new Image();
-    img.src = getTexturePath(location);
-    img.onload = () => {
-      textureRef.current = img;
-      drawMap();
-    };
-    img.onerror = () => {
-      console.error(`Failed to load texture for location: ${location}`);
+    let cancelled = false;
+    const loadTexture = (path: string) =>
+      new Promise<void>((resolve, reject) => {
+        if (textureCacheRef.current.has(path)) {
+          resolve();
+          return;
+        }
+        const img = new Image();
+        img.src = path;
+        img.onload = () => {
+          textureCacheRef.current.set(path, img);
+          resolve();
+        };
+        img.onerror = () => reject(new Error(path));
+      });
+
+    const texturePaths =
+      location === MIXED_TEXTURE_PLACE_ID
+        ? TEXTURE_PLACES.map((place) => place.path)
+        : [getTexturePath(location)];
+
+    Promise.all(texturePaths.map((path) => loadTexture(path)))
+      .then(() => {
+        if (!cancelled) drawMap();
+      })
+      .catch((error) => {
+        console.error(`Failed to load texture for location: ${location}`);
+        console.error(error);
+      });
+
+    return () => {
+      cancelled = true;
     };
   }, [location, drawMap]);
 
   // Redraw on map/grid changes
   useEffect(() => {
-    if (textureRef.current) drawMap();
+    drawMap();
   }, [map, gridSize, drawMap]);
 
   const drawHover = (ctx: CanvasRenderingContext2D, x: number, y: number) => {

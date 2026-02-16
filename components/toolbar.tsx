@@ -7,7 +7,6 @@ import {
   Github,
   Grid3X3,
   Heart,
-  MapPin,
   Save,
   Trash2,
   Twitter,
@@ -32,6 +31,8 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
+  SelectGroup,
+  SelectLabel,
 } from "@/components/ui/select";
 import { TEXTURE_PLACES, type TexturePlaceId } from "@/lib/textures";
 
@@ -82,7 +83,7 @@ export default function Toolbar() {
       <div className="flex items-center gap-2 mr-4">
         <img src="/logo.png" alt="Isoshire" className="w-10 object-contain" />
         <h1 className={`text-3xl font-bold ${bilboSwashCaps.className}`}>
-          Isoshire
+          Iso Middle Earth
         </h1>
       </div>
 
@@ -135,12 +136,19 @@ export default function Toolbar() {
         <SelectTrigger aria-label="Choose location">
           <SelectValue placeholder="Choose location" />
         </SelectTrigger>
-        <SelectContent>
-          {TEXTURE_PLACES.map((place) => (
-            <SelectItem key={place.id} value={place.id}>
-              {place.label}
-            </SelectItem>
-          ))}
+        <SelectContent position="popper">
+          <SelectGroup>
+            <SelectLabel>Realms</SelectLabel>
+            {TEXTURE_PLACES.map((place) => (
+              <SelectItem key={place.id} value={place.id}>
+                {place.label}
+              </SelectItem>
+            ))}
+          </SelectGroup>
+          <SelectGroup>
+            <SelectLabel>Other</SelectLabel>
+            <SelectItem value="mixed">Mixed</SelectItem>
+          </SelectGroup>
         </SelectContent>
       </Select>
 

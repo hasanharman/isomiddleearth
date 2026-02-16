@@ -8,10 +8,14 @@ export const TEXTURE_PLACES = [
   { id: "rivendell", label: "Rivendell", path: "/textures/rivendell.png" },
 ] as const;
 
-export type TexturePlaceId = (typeof TEXTURE_PLACES)[number]["id"];
+export type RealmTexturePlaceId = (typeof TEXTURE_PLACES)[number]["id"];
+export const MIXED_TEXTURE_PLACE_ID = "mixed" as const;
+export type TexturePlaceId = RealmTexturePlaceId | typeof MIXED_TEXTURE_PLACE_ID;
 
 export const DEFAULT_TEXTURE_PLACE: TexturePlaceId = "shire";
 
+const getRealmTexture = (id: string) =>
+  TEXTURE_PLACES.find((place) => place.id === id);
+
 export const getTexturePath = (id: string) =>
-  TEXTURE_PLACES.find((place) => place.id === id)?.path ??
-  `/textures/${id}.png`;
+  getRealmTexture(id)?.path ?? TEXTURE_PLACES[0].path;

@@ -1,8 +1,12 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { DEFAULT_TEXTURE_PLACE, type TexturePlaceId } from "@/lib/textures";
+import {
+  DEFAULT_TEXTURE_PLACE,
+  type RealmTexturePlaceId,
+  type TexturePlaceId,
+} from "@/lib/textures";
 
-export type TileCoord = [number, number]; // [row, col]
+export type TileCoord = [number, number, RealmTexturePlaceId?]; // [row, col, realm?]
 
 export interface SavedState {
   id: string;
@@ -63,7 +67,7 @@ export const useMapStore = create<MapStore>()(
 
       setTile: (x, y, tile) => {
         const map = get().map.map((row) => [...row]);
-        map[x][y] = [...tile];
+        map[x][y] = [tile[0], tile[1], tile[2]];
         set({ map });
       },
 
