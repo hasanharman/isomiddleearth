@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="[logo.png](https://github.com/hasanharman/iso-middle-earth/blob/main/public/logo.png)" alt="Iso Middle Earth Logo" width="180" />
+  <img src="https://raw.githubusercontent.com/hasanharman/isomiddleearth/main/public/logo.png" alt="Iso Middle Earth Logo" width="180" />
   <h1>Iso Middle Earth</h1>
   <p><strong>An isometric Middle-earth builder — craft your own realm, tile by tile.</strong></p>
 
@@ -18,7 +18,7 @@
     <img src="https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white" alt="React" />
     <img src="https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white" alt="TypeScript" />
     <img src="https://img.shields.io/badge/pnpm-latest-F69220?logo=pnpm&logoColor=white" alt="pnpm" />
-    <img src="https://img.shields.io/github/license/YOUR_USERNAME/iso-middle-earth" alt="License" />
+    <img src="https://img.shields.io/github/license/hasanharman/isomiddleearth" alt="License" />
   </p>
 </div>
 
@@ -27,9 +27,9 @@
 ## Demo
 
 <!-- Replace with your own screenshot or GIF -->
-![Iso Middle Earth Screenshot](screenshot.png)
+![Iso Middle Earth Preview](https://raw.githubusercontent.com/hasanharman/isomiddleearth/main/public/logo.png)
 
-> 🌐 **Live:** [iso-middle-earth.vercel.app](https://iso-middle-earth.vercel.app) *(update with your URL)*
+> 🌐 **Live:** [isomiddleearth.vercel.app](https://isomiddleearth.vercel.app/)
 
 ---
 
@@ -58,8 +58,8 @@
 
 ```bash
 # Clone the repo
-git clone https://github.com/YOUR_USERNAME/iso-middle-earth.git
-cd iso-middle-earth
+git clone https://github.com/hasanharman/isomiddleearth.git
+cd isomiddleearth
 
 # Install dependencies
 pnpm install
