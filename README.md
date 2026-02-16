@@ -1,7 +1,7 @@
 <div align="center">
   <img src="https://raw.githubusercontent.com/hasanharman/isomiddleearth/main/public/logo.png" alt="Iso Middle Earth Logo" width="180" />
   <h1>Iso Middle Earth</h1>
-  <p><strong>An isometric Middle-earth builder — craft your own realm, tile by tile.</strong></p>
+  <p><strong>An isometric Middle-earth builder — craft maps across multiple realms, tile by tile.</strong></p>
 
   <p>
     <a href="#features">Features</a> •
@@ -26,8 +26,7 @@
 
 ## Demo
 
-<!-- Replace with your own screenshot or GIF -->
-![Iso Middle Earth Preview](https://raw.githubusercontent.com/hasanharman/isomiddleearth/main/public/logo.png)
+![Iso Middle Earth Preview](public/demo.png)
 
 > 🌐 **Live:** [isomiddleearth.vercel.app](https://isomiddleearth.vercel.app/)
 
@@ -38,8 +37,10 @@
 | Feature | Description |
 |---|---|
 | 🗺️ **Isometric Canvas** | Place tiles on a beautiful isometric grid with hover preview |
+| 🌍 **Multi-Realm Maps** | Build with Shire, Gondor, Mordor, Lothlorien, Rohan, Moria, and Rivendell tiles |
+| 🧪 **Mixed Mode** | Use all realm tile variants in one map from a unified picker |
 | 📐 **Adjustable Grid Size** | Resize from 3×3 up to 20×20 via a slider |
-| 🎨 **72 Themed Tiles** | 6 groups — Terrain, Water & Bridges, Trees & Vegetation, Dwellings, Buildings, Decorations |
+| 🎨 **504 Realm Tile Variants** | 72 base tile types across 7 realms, grouped by Terrain, Water & Bridges, Trees & Vegetation, Dwellings, Buildings, and Decorations |
 | 💾 **Save & Load** | Persist your builds to localStorage via Zustand — name, save, and restore anytime |
 | 📸 **Export as PNG** | One-click download of your creation as a clean PNG image |
 | 🖱️ **Click & Drag** | Paint tiles by holding the mouse — right-click to erase |
@@ -66,3 +67,27 @@ pnpm install
 
 # Start dev server
 pnpm dev
+```
+
+## Usage
+
+1. Choose a realm from the top location selector or pick `Mixed`.
+2. Select a tile from the bottom picker and paint on the isometric grid.
+3. Right-click to erase tiles, and click-drag to paint quickly.
+4. Save/load maps locally or export your map as PNG.
+
+## Tech Stack
+
+- Next.js 16
+- React 19
+- TypeScript
+- Zustand
+- Tailwind CSS
+
+## Contributing
+
+Issues and pull requests are welcome at [hasanharman/isomiddleearth](https://github.com/hasanharman/isomiddleearth).
+
+## Sponsor
+
+Support development via [GitHub Sponsors](https://github.com/sponsors/hasanharman).
