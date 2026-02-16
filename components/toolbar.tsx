@@ -1,6 +1,16 @@
 "use client";
 
 import { useState } from "react";
+import {
+  Coffee,
+  Download,
+  Github,
+  Grid3X3,
+  Save,
+  Trash2,
+  Twitter,
+  X,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -13,6 +23,7 @@ import {
 } from "@/components/ui/dialog";
 import { Slider } from "@/components/ui/slider";
 import { useMapStore } from "@/lib/store";
+import { bilboSwashCaps } from "@/app/fonts";
 
 export default function Toolbar() {
   const {
@@ -38,7 +49,7 @@ export default function Toolbar() {
 
     const dataUrl = bgCanvas.toDataURL("image/png");
     const link = document.createElement("a");
-    link.download = `isoshite-${Date.now()}.png`;
+    link.download = `isoshire-${Date.now()}.png`;
     link.href = dataUrl;
     link.click();
   };
@@ -56,13 +67,22 @@ export default function Toolbar() {
 
   return (
     <div className="flex items-center gap-2 border-b bg-background px-4 py-2">
-      <h1 className="text-lg font-bold mr-4">🏡 Isoshire</h1>
+      <div className="flex items-center gap-2 mr-4">
+        <img src="/logo.png" alt="Isoshire" className="w-10 object-contain" />
+        <h1 className={`text-3xl font-bold ${bilboSwashCaps.className}`}>
+          Isoshire
+        </h1>
+      </div>
 
       {/* Grid Size */}
       <Dialog>
         <DialogTrigger asChild>
-          <Button variant="outline" size="sm">
-            Grid: {gridSize}×{gridSize}
+          <Button
+            variant="outline"
+            size="icon"
+            aria-label={`Grid size ${gridSize} by ${gridSize}`}
+          >
+            <Grid3X3 className="h-4 w-4" />
           </Button>
         </DialogTrigger>
         <DialogContent>
@@ -96,20 +116,34 @@ export default function Toolbar() {
       </Dialog>
 
       {/* Clear */}
-      <Button variant="outline" size="sm" onClick={() => initMap()}>
-        Clear
+      <Button
+        variant="outline"
+        size="icon"
+        onClick={() => initMap()}
+        aria-label="Clear map"
+      >
+        <Trash2 className="h-4 w-4" />
       </Button>
 
       {/* Export */}
-      <Button variant="outline" size="sm" onClick={handleExport}>
-        Export PNG
+      <Button
+        variant="outline"
+        size="icon"
+        onClick={handleExport}
+        aria-label="Export PNG"
+      >
+        <Download className="h-4 w-4" />
       </Button>
 
       {/* Save / Load */}
       <Dialog>
         <DialogTrigger asChild>
-          <Button variant="outline" size="sm">
-            Save / Load
+          <Button
+            variant="outline"
+            size="icon"
+            aria-label="Save and load states"
+          >
+            <Save className="h-4 w-4" />
           </Button>
         </DialogTrigger>
         <DialogContent className="max-w-md">
@@ -128,8 +162,8 @@ export default function Toolbar() {
                 onChange={(e) => setSaveName(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && handleSave()}
               />
-              <Button size="sm" onClick={handleSave}>
-                Save
+              <Button size="sm" onClick={handleSave} aria-label="Save state">
+                <Save className="h-4 w-4" />
               </Button>
             </div>
 
@@ -167,8 +201,9 @@ export default function Toolbar() {
                       variant="ghost"
                       className="text-destructive"
                       onClick={() => deleteState(s.id)}
+                      aria-label={`Delete ${s.name}`}
                     >
-                      ✕
+                      <X className="h-4 w-4" />
                     </Button>
                   </div>
                 </div>
@@ -177,6 +212,42 @@ export default function Toolbar() {
           </div>
         </DialogContent>
       </Dialog>
+
+      <div className="ml-auto flex items-center gap-1">
+        <Button variant="ghost" size="icon" asChild aria-label="X @strad3r">
+          <a href="https://x.com/strad3r" target="_blank" rel="noreferrer">
+            <Twitter className="h-4 w-4" />
+          </a>
+        </Button>
+        <Button
+          variant="ghost"
+          size="icon"
+          asChild
+          aria-label="GitHub repository"
+        >
+          <a
+            href="https://github.com/hasanharman/isoshire"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Github className="h-4 w-4" />
+          </a>
+        </Button>
+        <Button
+          variant="ghost"
+          size="icon"
+          asChild
+          aria-label="Buy me a coffee"
+        >
+          <a
+            href="https://buymeacoffee.com/hasanharman"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Coffee className="h-4 w-4" />
+          </a>
+        </Button>
+      </div>
     </div>
   );
 }
