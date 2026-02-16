@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Coffee,
   Download,
@@ -47,6 +47,8 @@ export default function Toolbar() {
     initMap,
     location,
     setLocation,
+    undo,
+    canUndo,
   } = useMapStore();
 
   const [saveName, setSaveName] = useState("");
@@ -77,6 +79,27 @@ export default function Toolbar() {
   const handleResizeConfirm = () => {
     setGridSize(pendingSize);
   };
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!(e.metaKey || e.ctrlKey) || e.key.toLowerCase() !== "z") return;
+
+      const target = e.target as HTMLElement | null;
+      if (target) {
+        const tag = target.tagName;
+        const isTypingTarget =
+          target.isContentEditable || tag === "INPUT" || tag === "TEXTAREA";
+        if (isTypingTarget) return;
+      }
+
+      if (!canUndo) return;
+      e.preventDefault();
+      undo();
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [undo, canUndo]);
 
   return (
     <div className="flex items-center gap-2 border-b bg-background px-4 py-2">
