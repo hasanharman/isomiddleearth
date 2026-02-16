@@ -1,6 +1,6 @@
 <div align="center">
-  <img src="logo.png" alt="IsoShire Logo" width="180" />
-  <h1>🏡 IsoShire</h1>
+  <img src="[logo.png](https://github.com/hasanharman/isoshire/blob/main/public/logo.png)" alt="IsoShire Logo" width="180" />
+  <h1>Isoshire</h1>
   <p><strong>An isometric Shire builder — craft your own corner of Middle-earth, tile by tile.</strong></p>
 
   <p>

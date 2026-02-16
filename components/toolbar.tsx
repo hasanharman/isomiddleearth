@@ -6,6 +6,7 @@ import {
   Download,
   Github,
   Grid3X3,
+  Heart,
   Save,
   Trash2,
   Twitter,
@@ -231,6 +232,20 @@ export default function Toolbar() {
             rel="noreferrer"
           >
             <Github className="h-4 w-4" />
+          </a>
+        </Button>
+        <Button
+          variant="ghost"
+          size="icon"
+          asChild
+          aria-label="GitHub Sponsors"
+        >
+          <a
+            href="https://github.com/sponsors/hasanharman"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Heart className="h-4 w-4" />
           </a>
         </Button>
         <Button
