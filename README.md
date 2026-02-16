@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/hasanharman/isomiddleearth/main/public/logo.png" alt="Iso Middle Earth Logo" width="180" />
+  <img src="public/logo.png" alt="Iso Middle Earth Logo" width="180" />
   <h1>Iso Middle Earth</h1>
   <p><strong>An isometric Middle-earth builder — craft maps across multiple realms, tile by tile.</strong></p>
 
@@ -8,6 +8,7 @@
     <a href="#demo">Demo</a> •
     <a href="#getting-started">Getting Started</a> •
     <a href="#usage">Usage</a> •
+    <a href="#collections">Collections</a> •
     <a href="#tech-stack">Tech Stack</a> •
     <a href="#contributing">Contributing</a> •
     <a href="#sponsor">Sponsor</a>
@@ -76,13 +77,59 @@ pnpm dev
 3. Right-click to erase tiles, and click-drag to paint quickly.
 4. Save/load maps locally or export your map as PNG.
 
-## Community Collections
+## Collections
 
-- Browse shared maps at `/collections`.
-- Community map files are stored in `collections/maps`.
-- Contributors can open a pull request with a new JSON file.
-- JSON shape is documented in `collections/schema/map.schema.json` and `collections/README.md`.
-- PRs are auto-checked by `.github/workflows/validate-collections.yml`.
+Shared maps are available at `/collections`.
+
+- Storage path: `collections/maps/<id>.json`
+- Schema: `collections/schema/map.schema.json`
+- Docs: `collections/README.md`
+- CI validation: `.github/workflows/validate-collections.yml`
+
+### How to add a map
+
+1. Create your map in the app and note:
+   - `location` (realm or `mixed`)
+   - `gridSize` (3 to 20)
+   - `map` matrix of tiles
+2. Add a new file in `collections/maps`, for example `collections/maps/my-epic-map.json`.
+3. Ensure `id` matches the filename (without `.json`), using kebab-case.
+4. Validate locally:
+
+```bash
+pnpm validate:collections
+```
+
+5. Open a pull request.
+
+Example:
+
+```json
+{
+  "schemaVersion": 1,
+  "id": "my-epic-map",
+  "name": "My Epic Map",
+  "description": "A mixed-realm mountain pass.",
+  "author": {
+    "name": "Your Name",
+    "github": "your-github-username"
+  },
+  "createdAt": "2026-02-16T00:00:00.000Z",
+  "location": "mixed",
+  "gridSize": 7,
+  "tags": ["adventure", "mixed"],
+  "map": [
+    [
+      [0, 0, "shire"],
+      [2, 4, "gondor"]
+    ],
+    [
+      [1, 6, "mordor"],
+      [3, 2, "rivendell"]
+    ]
+  ]
+}
+```
 
 ## Tech Stack
 
