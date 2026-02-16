@@ -7,6 +7,7 @@ import {
   Github,
   Grid3X3,
   Heart,
+  MapPin,
   Save,
   Trash2,
   Twitter,
@@ -25,6 +26,14 @@ import {
 import { Slider } from "@/components/ui/slider";
 import { useMapStore } from "@/lib/store";
 import { bilboSwashCaps } from "@/app/fonts";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { TEXTURE_PLACES, type TexturePlaceId } from "@/lib/textures";
 
 export default function Toolbar() {
   const {
@@ -35,6 +44,8 @@ export default function Toolbar() {
     loadState,
     deleteState,
     initMap,
+    location,
+    setLocation,
   } = useMapStore();
 
   const [saveName, setSaveName] = useState("");
@@ -115,6 +126,23 @@ export default function Toolbar() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
+
+      {/* Clear */}
+      <Select
+        value={location}
+        onValueChange={(value) => setLocation(value as TexturePlaceId)}
+      >
+        <SelectTrigger aria-label="Choose location">
+          <SelectValue placeholder="Choose location" />
+        </SelectTrigger>
+        <SelectContent>
+          {TEXTURE_PLACES.map((place) => (
+            <SelectItem key={place.id} value={place.id}>
+              {place.label}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
 
       {/* Clear */}
       <Button

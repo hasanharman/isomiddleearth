@@ -5,6 +5,7 @@ import { TILE_GROUPS, SPRITE_TILE_W, SPRITE_TILE_H } from "@/lib/tiles";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
+import { getTexturePath } from "@/lib/textures";
 import {
   Tooltip,
   TooltipContent,
@@ -13,7 +14,7 @@ import {
 } from "@/components/ui/tooltip";
 
 export default function TilePicker() {
-  const { activeTool, setActiveTool } = useMapStore();
+  const { activeTool, setActiveTool, location } = useMapStore();
 
   return (
     <div className="border-t bg-background">
@@ -49,7 +50,7 @@ export default function TilePicker() {
                                 style={{
                                   width: 65,
                                   height: 115,
-                                  backgroundImage: `url('/textures/shire.png')`,
+                                  backgroundImage: `url('${getTexturePath(location)}')`,
                                   backgroundRepeat: "no-repeat",
                                   backgroundPosition: `-${(tile.col * SPRITE_TILE_W) / 2 + 1}px -${(group.row * SPRITE_TILE_H) / 2}px`,
                                   backgroundSize: `${(SPRITE_TILE_W * 12) / 2}px ${(SPRITE_TILE_H * 5.9) / 2}px`,

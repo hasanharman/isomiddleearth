@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef } from "react";
 import { useMapStore } from "@/lib/store";
 import { SPRITE_TILE_H, SPRITE_TILE_W } from "@/lib/tiles";
+import { getTexturePath } from "@/lib/textures";
 
 export default function IsoCanvas() {
   const bgRef = useRef<HTMLCanvasElement>(null);
@@ -10,7 +11,8 @@ export default function IsoCanvas() {
   const textureRef = useRef<HTMLImageElement | null>(null);
   const isPlacingRef = useRef(false);
 
-  const { map, gridSize, activeTool, setTile, clearTile } = useMapStore();
+  const { map, gridSize, activeTool, setTile, clearTile, location } =
+    useMapStore();
 
   const tileWidth = 128;
   const tileHeight = 64;
@@ -90,18 +92,15 @@ export default function IsoCanvas() {
   // Load texture
   useEffect(() => {
     const img = new Image();
-    img.src = "/textures/shire.png"; // ← Remove "public" prefix
+    img.src = getTexturePath(location);
     img.onload = () => {
       textureRef.current = img;
       drawMap();
     };
     img.onerror = () => {
-      console.error(
-        "Failed to load shire.png — make sure it exists at public/textures/shire.png",
-      );
+      console.error(`Failed to load texture for location: ${location}`);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [location, drawMap]);
 
   // Redraw on map/grid changes
   useEffect(() => {

@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import { DEFAULT_TEXTURE_PLACE, type TexturePlaceId } from "@/lib/textures";
 
 export type TileCoord = [number, number]; // [row, col]
 
@@ -8,10 +9,15 @@ export interface SavedState {
   name: string;
   map: TileCoord[][];
   gridSize: number;
+  location?: TexturePlaceId;
   createdAt: number;
 }
 
 interface MapStore {
+  // Active texture location
+  location: TexturePlaceId;
+  setLocation: (location: TexturePlaceId) => void;
+
   // Grid
   gridSize: number;
   setGridSize: (size: number) => void;
@@ -42,6 +48,8 @@ export const useMapStore = create<MapStore>()(
   persist(
     (set, get) => ({
       gridSize: 7,
+      location: DEFAULT_TEXTURE_PLACE,
+      setLocation: (location) => set({ location }),
       setGridSize: (size: number) => {
         set({ gridSize: size });
         get().initMap(size);
@@ -71,12 +79,13 @@ export const useMapStore = create<MapStore>()(
       savedStates: [],
 
       saveState: (name: string) => {
-        const { map, gridSize, savedStates } = get();
+        const { map, gridSize, savedStates, location } = get();
         const newSave: SavedState = {
           id: crypto.randomUUID(),
           name,
           map: map.map((row) => row.map((t) => [...t] as TileCoord)),
           gridSize,
+          location,
           createdAt: Date.now(),
         };
         set({ savedStates: [...savedStates, newSave] });
@@ -88,6 +97,7 @@ export const useMapStore = create<MapStore>()(
           set({
             map: state.map.map((row) => row.map((t) => [...t] as TileCoord)),
             gridSize: state.gridSize,
+            location: state.location ?? DEFAULT_TEXTURE_PLACE,
           });
         }
       },
