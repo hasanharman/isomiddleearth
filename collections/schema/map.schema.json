@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://isomiddleearth.dev/schemas/map.schema.json",
+  "title": "Iso Middle Earth Shared Map",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "id",
+    "name",
+    "author",
+    "createdAt",
+    "gridSize",
+    "location",
+    "map"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "minLength": 3,
+      "maxLength": 64
+    },
+    "name": { "type": "string", "minLength": 1, "maxLength": 120 },
+    "description": { "type": "string", "maxLength": 500 },
+    "author": {
+      "type": "object",
+      "required": ["name", "github"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string", "minLength": 1, "maxLength": 80 },
+        "github": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9](?:[A-Za-z0-9-]{0,38})$"
+        }
+      }
+    },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "gridSize": { "type": "integer", "minimum": 3, "maximum": 20 },
+    "location": {
+      "type": "string",
+      "enum": [
+        "shire",
+        "gondor",
+        "mordor",
+        "lothlorien",
+        "rohan",
+        "moria",
+        "rivendell",
+        "mixed"
+      ]
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string", "maxLength": 24 },
+      "maxItems": 8
+    },
+    "map": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "oneOf": [
+            {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "prefixItems": [
+                { "type": "integer", "minimum": 0, "maximum": 5 },
+                { "type": "integer", "minimum": 0, "maximum": 11 }
+              ]
+            },
+            {
+              "type": "array",
+              "minItems": 3,
+              "maxItems": 3,
+              "prefixItems": [
+                { "type": "integer", "minimum": 0, "maximum": 5 },
+                { "type": "integer", "minimum": 0, "maximum": 11 },
+                {
+                  "type": "string",
+                  "enum": [
+                    "shire",
+                    "gondor",
+                    "mordor",
+                    "lothlorien",
+                    "rohan",
+                    "moria",
+                    "rivendell"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }
+}

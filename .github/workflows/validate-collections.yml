@@ -1,0 +1,31 @@
+name: Validate Collections
+
+on:
+  pull_request:
+    paths:
+      - "collections/**"
+      - "scripts/validate-collections.mjs"
+      - ".github/workflows/validate-collections.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "collections/**"
+      - "scripts/validate-collections.mjs"
+      - ".github/workflows/validate-collections.yml"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Validate collection JSON
+        run: node scripts/validate-collections.mjs

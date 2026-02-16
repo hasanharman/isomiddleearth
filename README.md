@@ -76,6 +76,14 @@ pnpm dev
 3. Right-click to erase tiles, and click-drag to paint quickly.
 4. Save/load maps locally or export your map as PNG.
 
+## Community Collections
+
+- Browse shared maps at `/collections`.
+- Community map files are stored in `collections/maps`.
+- Contributors can open a pull request with a new JSON file.
+- JSON shape is documented in `collections/schema/map.schema.json` and `collections/README.md`.
+- PRs are auto-checked by `.github/workflows/validate-collections.yml`.
+
 ## Tech Stack
 
 - Next.js 16

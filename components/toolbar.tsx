@@ -1,17 +1,18 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { Coffee, Github, Heart, Twitter } from "lucide-react";
+import { HugeiconsIcon } from "@hugeicons/react";
 import {
-  Coffee,
-  Download,
-  Github,
-  Grid3X3,
-  Heart,
-  Save,
-  Trash2,
-  Twitter,
-  X,
-} from "lucide-react";
+  GridTableIcon,
+  Delete01Icon,
+  Undo02Icon,
+  Download01Icon,
+  FloppyDiskIcon,
+  AdventureIcon,
+  CodeIcon,
+} from "@hugeicons/core-free-icons";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -23,6 +24,13 @@ import {
   DialogClose,
 } from "@/components/ui/dialog";
 import { Slider } from "@/components/ui/slider";
+import { Kbd, KbdGroup } from "@/components/ui/kbd";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { useMapStore } from "@/lib/store";
 import { bilboSwashCaps } from "@/app/fonts";
 import {
@@ -35,14 +43,106 @@ import {
   SelectLabel,
 } from "@/components/ui/select";
 import { TEXTURE_PLACES, type TexturePlaceId } from "@/lib/textures";
+import type { TileCoord, SavedState } from "@/lib/store";
+
+const REALMS = new Set<string>([
+  "shire",
+  "gondor",
+  "mordor",
+  "lothlorien",
+  "rohan",
+  "moria",
+  "rivendell",
+]);
+const LOCATIONS = new Set<string>([...REALMS, "mixed"]);
+
+type ExportMapPayload = {
+  schemaVersion: 1;
+  id: string;
+  name: string;
+  author: {
+    name: string;
+    github: string;
+  };
+  createdAt: string;
+  location: TexturePlaceId;
+  gridSize: number;
+  map: TileCoord[][];
+};
+
+const toSlug = (value: string) =>
+  value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "")
+    .slice(0, 64) || "map";
+
+const cloneTileMap = (map: TileCoord[][]) =>
+  map.map((row) => row.map((tile) => [...tile] as TileCoord));
+
+const isTileCoord = (value: unknown): value is TileCoord => {
+  if (!Array.isArray(value) || (value.length !== 2 && value.length !== 3)) {
+    return false;
+  }
+  const [row, col, realm] = value;
+  if (!Number.isInteger(row) || row < 0 || row > 5) return false;
+  if (!Number.isInteger(col) || col < 0 || col > 11) return false;
+  if (
+    realm !== undefined &&
+    (typeof realm !== "string" || !REALMS.has(realm))
+  ) {
+    return false;
+  }
+  return true;
+};
+
+const isTileMap = (value: unknown): value is TileCoord[][] => {
+  if (!Array.isArray(value)) return false;
+  return value.every(
+    (row) =>
+      Array.isArray(row) &&
+      row.every((tile) => {
+        return isTileCoord(tile);
+      }),
+  );
+};
+
+const parseImportedSnapshot = (
+  value: unknown,
+): {
+  map: TileCoord[][];
+  gridSize: number;
+  location: TexturePlaceId;
+} | null => {
+  if (!value || typeof value !== "object") return null;
+  const record = value as Record<string, unknown>;
+
+  if (!Number.isInteger(record.gridSize)) return null;
+  const gridSize = record.gridSize as number;
+  if (gridSize < 3 || gridSize > 20) return null;
+  if (!isTileMap(record.map)) return null;
+  if (record.map.length !== gridSize) return null;
+  if (!record.map.every((row) => row.length === gridSize)) return null;
+
+  const location = record.location;
+  if (typeof location !== "string" || !LOCATIONS.has(location)) return null;
+
+  return {
+    map: cloneTileMap(record.map),
+    gridSize,
+    location: location as TexturePlaceId,
+  };
+};
 
 export default function Toolbar() {
   const {
     gridSize,
+    map,
     setGridSize,
     savedStates,
     saveState,
     loadState,
+    loadSnapshot,
     deleteState,
     initMap,
     location,
@@ -53,6 +153,10 @@ export default function Toolbar() {
 
   const [saveName, setSaveName] = useState("");
   const [pendingSize, setPendingSize] = useState(gridSize);
+  const [jsonNotice, setJsonNotice] = useState<string | null>(null);
+  const [jsonError, setJsonError] = useState<string | null>(null);
+
+  const importInputRef = useRef<HTMLInputElement>(null);
 
   const handleExport = async () => {
     const wrapper = document.getElementById("iso-canvas-wrapper");
@@ -70,14 +174,107 @@ export default function Toolbar() {
   };
 
   const handleSave = () => {
-    if (saveName.trim()) {
-      saveState(saveName.trim());
-      setSaveName("");
+    if (!saveName.trim()) return;
+    saveState(saveName.trim());
+    setSaveName("");
+  };
+
+  const buildExportPayload = (
+    name: string,
+    stateMap: TileCoord[][],
+    stateGridSize: number,
+    stateLocation: TexturePlaceId,
+  ): ExportMapPayload => ({
+    schemaVersion: 1,
+    id: toSlug(name),
+    name,
+    author: {
+      name: "Anonymous",
+      github: "your-github-username",
+    },
+    createdAt: new Date().toISOString(),
+    location: stateLocation,
+    gridSize: stateGridSize,
+    map: cloneTileMap(stateMap),
+  });
+
+  const downloadJson = (payload: ExportMapPayload, fileName: string) => {
+    const blob = new Blob([JSON.stringify(payload, null, 2)], {
+      type: "application/json",
+    });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = fileName;
+    link.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const handleExportCurrentJson = () => {
+    const payload = buildExportPayload(
+      saveName.trim() || "untitled-map",
+      map,
+      gridSize,
+      location,
+    );
+    downloadJson(payload, `${payload.id}.json`);
+    setJsonError(null);
+    setJsonNotice("Exported current map as JSON.");
+  };
+
+  const handleExportSavedJson = (savedState: SavedState) => {
+    const payload = buildExportPayload(
+      savedState.name,
+      savedState.map,
+      savedState.gridSize,
+      savedState.location ?? "shire",
+    );
+    downloadJson(payload, `${payload.id}.json`);
+    setJsonError(null);
+    setJsonNotice(`Exported ${savedState.name} as JSON.`);
+  };
+
+  const handleImportJsonClick = () => {
+    importInputRef.current?.click();
+  };
+
+  const handleImportJsonFile = async (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    const file = event.target.files?.[0];
+    event.target.value = "";
+    if (!file) return;
+
+    try {
+      const text = await file.text();
+      const parsed = JSON.parse(text) as unknown;
+      const snapshot = parseImportedSnapshot(parsed);
+      if (!snapshot) {
+        setJsonNotice(null);
+        setJsonError("Invalid JSON map format.");
+        return;
+      }
+
+      loadSnapshot(snapshot);
+      setJsonError(null);
+      setJsonNotice(`Loaded JSON map from ${file.name}.`);
+    } catch {
+      setJsonNotice(null);
+      setJsonError("Failed to read JSON file.");
     }
   };
 
   const handleResizeConfirm = () => {
     setGridSize(pendingSize);
+  };
+
+  const handleClearMap = () => {
+    const url = new URL(window.location.href);
+    if (url.searchParams.has("collection")) {
+      url.searchParams.delete("collection");
+      window.history.replaceState(window.history.state, "", url.toString());
+    }
+    initMap();
   };
 
   useEffect(() => {
@@ -103,12 +300,12 @@ export default function Toolbar() {
 
   return (
     <div className="flex items-center gap-2 border-b bg-background px-4 py-2">
-      <div className="flex items-center gap-2 mr-4">
+      <Link href="/" className="flex items-center gap-2 mr-4">
         <img src="/logo.png" alt="Isoshire" className="w-10 object-contain" />
         <h1 className={`text-3xl font-bold ${bilboSwashCaps.className}`}>
           Iso Middle Earth
         </h1>
-      </div>
+      </Link>
 
       {/* Grid Size */}
       <Dialog>
@@ -118,7 +315,8 @@ export default function Toolbar() {
             size="icon"
             aria-label={`Grid size ${gridSize} by ${gridSize}`}
           >
-            <Grid3X3 className="h-4 w-4" />
+            <HugeiconsIcon icon={GridTableIcon} />
+            {/* <Grid3X3 className="size-4" /> */}
           </Button>
         </DialogTrigger>
         <DialogContent>
@@ -156,7 +354,10 @@ export default function Toolbar() {
         value={location}
         onValueChange={(value) => setLocation(value as TexturePlaceId)}
       >
-        <SelectTrigger aria-label="Choose location">
+        <SelectTrigger
+          aria-label="Choose location"
+          className="border-zinc-300 bg-linear-to-t from-muted to-background shadow-xs shadow-zinc-950/10 hover:to-muted dark:from-muted/50 dark:border-border duration-200"
+        >
           <SelectValue placeholder="Choose location" />
         </SelectTrigger>
         <SelectContent position="popper">
@@ -179,11 +380,33 @@ export default function Toolbar() {
       <Button
         variant="outline"
         size="icon"
-        onClick={() => initMap()}
+        onClick={handleClearMap}
         aria-label="Clear map"
       >
-        <Trash2 className="h-4 w-4" />
+        <HugeiconsIcon icon={Delete01Icon} />
       </Button>
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button
+              variant="outline"
+              onClick={undo}
+              disabled={!canUndo}
+              aria-label="Undo"
+              className="gap-2"
+            >
+              <HugeiconsIcon icon={Undo02Icon} />
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent sideOffset={8}>
+            <KbdGroup>
+              <Kbd>⌘</Kbd>
+              <span>+</span>
+              <Kbd>Z</Kbd>
+            </KbdGroup>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
 
       {/* Export */}
       <Button
@@ -192,7 +415,7 @@ export default function Toolbar() {
         onClick={handleExport}
         aria-label="Export PNG"
       >
-        <Download className="h-4 w-4" />
+        <HugeiconsIcon icon={Download01Icon} className="h-4 w-4" />
       </Button>
 
       {/* Save / Load */}
@@ -203,7 +426,7 @@ export default function Toolbar() {
             size="icon"
             aria-label="Save and load states"
           >
-            <Save className="h-4 w-4" />
+            <HugeiconsIcon icon={FloppyDiskIcon} className="h-4 w-4" />
           </Button>
         </DialogTrigger>
         <DialogContent className="max-w-md">
@@ -212,66 +435,51 @@ export default function Toolbar() {
           </DialogHeader>
 
           <div className="space-y-4">
-            {/* Save new */}
+            <input
+              ref={importInputRef}
+              type="file"
+              accept="application/json,.json"
+              className="hidden"
+              onChange={handleImportJsonFile}
+            />
+
             <div className="flex gap-2">
-              <input
-                type="text"
-                placeholder="Save name..."
-                className="flex-1 border rounded-md px-3 py-1.5 text-sm bg-background"
-                value={saveName}
-                onChange={(e) => setSaveName(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && handleSave()}
-              />
-              <Button size="sm" onClick={handleSave} aria-label="Save state">
-                <Save className="h-4 w-4" />
+              <Button
+                type="button"
+                size="sm"
+                variant="outline"
+                className="flex-1"
+                onClick={handleExportCurrentJson}
+              >
+                <HugeiconsIcon icon={CodeIcon} className="h-4 w-4" />
+                Export current JSON
+              </Button>
+              <Button
+                type="button"
+                size="sm"
+                variant="outline"
+                className="flex-1"
+                onClick={handleImportJsonClick}
+              >
+                <HugeiconsIcon icon={CodeIcon} className="h-4 w-4" />
+                Load JSON
               </Button>
             </div>
-
-            {/* List */}
-            <div className="space-y-2 max-h-60 overflow-auto">
-              {savedStates.length === 0 && (
-                <p className="text-sm text-muted-foreground text-center py-4">
-                  No saved states yet.
-                </p>
-              )}
-              {savedStates.map((s) => (
-                <div
-                  key={s.id}
-                  className="flex items-center justify-between border rounded-md px-3 py-2"
-                >
-                  <div>
-                    <p className="text-sm font-medium">{s.name}</p>
-                    <p className="text-xs text-muted-foreground">
-                      {s.gridSize}×{s.gridSize} ·{" "}
-                      {new Date(s.createdAt).toLocaleDateString("en-GB")}
-                    </p>
-                  </div>
-                  <div className="flex gap-1">
-                    <DialogClose asChild>
-                      <Button
-                        size="sm"
-                        variant="ghost"
-                        onClick={() => loadState(s.id)}
-                      >
-                        Load
-                      </Button>
-                    </DialogClose>
-                    <Button
-                      size="sm"
-                      variant="ghost"
-                      className="text-destructive"
-                      onClick={() => deleteState(s.id)}
-                      aria-label={`Delete ${s.name}`}
-                    >
-                      <X className="h-4 w-4" />
-                    </Button>
-                  </div>
-                </div>
-              ))}
-            </div>
+            {jsonNotice ? (
+              <p className="text-xs text-muted-foreground">{jsonNotice}</p>
+            ) : null}
+            {jsonError ? (
+              <p className="text-xs text-destructive">{jsonError}</p>
+            ) : null}
           </div>
         </DialogContent>
       </Dialog>
+
+      <Button variant="outline" size="icon" asChild aria-label="Collections">
+        <Link href="/collections">
+          <HugeiconsIcon icon={AdventureIcon} />
+        </Link>
+      </Button>
 
       <div className="ml-auto flex items-center gap-1">
         <Button variant="ghost" size="icon" asChild aria-label="X @strad3r">

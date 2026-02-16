@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "id": "shire-map",
+  "name": "Shire Map",
+  "author": {
+    "name": "Hasan Harman",
+    "github": "hasanharman"
+  },
+  "createdAt": "2026-02-16T18:05:07.118Z",
+  "location": "mixed",
+  "gridSize": 7,
+  "map": [
+    [
+      [0, 0],
+      [2, 6, "shire"],
+      [2, 4, "shire"],
+      [2, 9, "shire"],
+      [0, 0],
+      [0, 0],
+      [4, 1, "shire"]
+    ],
+    [
+      [2, 5, "shire"],
+      [0, 0],
+      [3, 1, "shire"],
+      [5, 1, "shire"],
+      [0, 0],
+      [4, 0, "shire"],
+      [0, 6, "shire"]
+    ],
+    [
+      [1, 1, "shire"],
+      [3, 0, "shire"],
+      [0, 10, "shire"],
+      [0, 7, "shire"],
+      [0, 7, "shire"],
+      [0, 7, "shire"],
+      [0, 10, "shire"]
+    ],
+    [
+      [1, 1, "shire"],
+      [5, 7, "shire"],
+      [0, 6, "shire"],
+      [1, 6, "shire"],
+      [0, 0],
+      [5, 4, "shire"],
+      [0, 6, "shire"]
+    ],
+    [
+      [1, 1, "shire"],
+      [0, 2, "shire"],
+      [0, 6, "shire"],
+      [2, 0, "shire"],
+      [0, 0],
+      [2, 8, "shire"],
+      [0, 6, "shire"]
+    ],
+    [
+      [1, 1, "shire"],
+      [0, 4, "shire"],
+      [0, 6, "shire"],
+      [0, 4, "shire"],
+      [0, 0],
+      [0, 0],
+      [0, 6, "shire"]
+    ],
+    [
+      [1, 1, "shire"],
+      [0, 2, "shire"],
+      [0, 6, "shire"],
+      [2, 8, "shire"],
+      [0, 0],
+      [0, 0],
+      [0, 6, "shire"]
+    ]
+  ]
+}

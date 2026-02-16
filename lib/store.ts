@@ -49,6 +49,11 @@ interface MapStore {
   savedStates: SavedState[];
   saveState: (name: string) => void;
   loadState: (id: string) => void;
+  loadSnapshot: (snapshot: {
+    map: TileCoord[][];
+    gridSize: number;
+    location?: TexturePlaceId;
+  }) => void;
   deleteState: (id: string) => void;
 }
 
@@ -193,6 +198,20 @@ export const useMapStore = create<MapStore>()(
             canUndo: true,
           });
         }
+      },
+      loadSnapshot: ({ map: nextMap, gridSize: nextGridSize, location: nextLocation }) => {
+        const { map, gridSize, location, history } = get();
+        set({
+          map: cloneMap(nextMap),
+          gridSize: nextGridSize,
+          location: nextLocation ?? DEFAULT_TEXTURE_PLACE,
+          history: pushHistory(history, {
+            map: cloneMap(map),
+            gridSize,
+            location,
+          }),
+          canUndo: true,
+        });
       },
 
       deleteState: (id: string) => {
