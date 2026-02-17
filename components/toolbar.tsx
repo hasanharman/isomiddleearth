@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { Coffee, Github, Heart, Twitter } from "lucide-react";
+import { Coffee, Github, Heart, Menu, Twitter } from "lucide-react";
 import { HugeiconsIcon } from "@hugeicons/react";
 import {
   GridTableIcon,
@@ -299,10 +299,12 @@ export default function Toolbar() {
   }, [undo, canUndo]);
 
   return (
-    <div className="flex items-center gap-2 border-b bg-background px-4 py-2">
-      <Link href="/" className="flex items-center gap-2 mr-4">
+    <div className="flex items-center gap-1 border-b bg-background px-2 py-2 sm:gap-2 sm:px-4">
+      <Link href="/" className="mr-1 flex shrink-0 items-center gap-2 sm:mr-4">
         <img src="/logo.png" alt="Isoshire" className="w-10 object-contain" />
-        <h1 className={`text-3xl font-bold ${bilboSwashCaps.className}`}>
+        <h1
+          className={`hidden text-3xl font-bold md:block ${bilboSwashCaps.className}`}
+        >
           Iso Middle Earth
         </h1>
       </Link>
@@ -356,7 +358,7 @@ export default function Toolbar() {
       >
         <SelectTrigger
           aria-label="Choose location"
-          className="border-zinc-300 bg-linear-to-t from-muted to-background shadow-xs shadow-zinc-950/10 hover:to-muted dark:from-muted/50 dark:border-border duration-200"
+          className="w-[118px] border-zinc-300 bg-linear-to-t from-muted to-background shadow-xs shadow-zinc-950/10 duration-200 hover:to-muted sm:w-[156px] dark:border-border dark:from-muted/50"
         >
           <SelectValue placeholder="Choose location" />
         </SelectTrigger>
@@ -390,10 +392,10 @@ export default function Toolbar() {
           <TooltipTrigger asChild>
             <Button
               variant="outline"
+              size="icon"
               onClick={undo}
               disabled={!canUndo}
               aria-label="Undo"
-              className="gap-2"
             >
               <HugeiconsIcon icon={Undo02Icon} />
             </Button>
@@ -414,6 +416,7 @@ export default function Toolbar() {
         size="icon"
         onClick={handleExport}
         aria-label="Export PNG"
+        className="hidden sm:inline-flex"
       >
         <HugeiconsIcon icon={Download01Icon} className="h-4 w-4" />
       </Button>
@@ -425,6 +428,7 @@ export default function Toolbar() {
             variant="outline"
             size="icon"
             aria-label="Save and load states"
+            className="hidden sm:inline-flex"
           >
             <HugeiconsIcon icon={FloppyDiskIcon} className="h-4 w-4" />
           </Button>
@@ -475,13 +479,89 @@ export default function Toolbar() {
         </DialogContent>
       </Dialog>
 
-      <Button variant="outline" size="icon" asChild aria-label="Collections">
+      <Button
+        variant="outline"
+        size="icon"
+        asChild
+        aria-label="Collections"
+        className="hidden sm:inline-flex"
+      >
         <Link href="/collections">
           <HugeiconsIcon icon={AdventureIcon} />
         </Link>
       </Button>
 
-      <div className="ml-auto flex items-center gap-1">
+      <Dialog>
+        <DialogTrigger asChild>
+          <Button
+            variant="outline"
+            size="icon"
+            className="ml-auto sm:hidden"
+            aria-label="Open more options"
+          >
+            <Menu className="h-4 w-4" />
+          </Button>
+        </DialogTrigger>
+        <DialogContent className="max-w-xs">
+          <DialogHeader>
+            <DialogTitle>More</DialogTitle>
+          </DialogHeader>
+          <div className="grid gap-2">
+            <Button
+              variant="outline"
+              className="justify-start gap-2"
+              onClick={handleExport}
+            >
+              <HugeiconsIcon icon={Download01Icon} className="h-4 w-4" />
+              Export PNG
+            </Button>
+            <Button variant="outline" asChild className="justify-start gap-2">
+              <Link href="/collections">
+                <HugeiconsIcon icon={AdventureIcon} className="h-4 w-4" />
+                Collections
+              </Link>
+            </Button>
+            <Button variant="outline" asChild className="justify-start gap-2">
+              <a href="https://x.com/strad3r" target="_blank" rel="noreferrer">
+                <Twitter className="h-4 w-4" />
+                X / Twitter
+              </a>
+            </Button>
+            <Button variant="outline" asChild className="justify-start gap-2">
+              <a
+                href="https://github.com/hasanharman/isoshire"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Github className="h-4 w-4" />
+                GitHub
+              </a>
+            </Button>
+            <Button variant="outline" asChild className="justify-start gap-2">
+              <a
+                href="https://github.com/sponsors/hasanharman"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Heart className="h-4 w-4" />
+                Sponsor
+              </a>
+            </Button>
+            <Button variant="outline" asChild className="justify-start gap-2">
+              <a
+                href="https://buymeacoffee.com/hasanharman"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Coffee className="h-4 w-4" />
+                Buy Me a Coffee
+              </a>
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      <div className="ml-auto hidden items-center gap-1 sm:flex">
         <Button variant="ghost" size="icon" asChild aria-label="X @strad3r">
           <a href="https://x.com/strad3r" target="_blank" rel="noreferrer">
             <Twitter className="h-4 w-4" />

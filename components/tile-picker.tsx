@@ -25,25 +25,25 @@ export default function TilePicker() {
     : TEXTURE_PLACES.filter((place) => place.id === location);
 
   return (
-    <div className="border-t bg-background">
+    <div className="shrink-0 border-t bg-background">
       <ScrollArea className="w-full">
-        <div className="flex gap-4 p-3">
+        <div className="flex gap-3 p-2 sm:gap-4 sm:p-3">
           <TooltipProvider delayDuration={200}>
             {visibleRealms.map((realm, realmIndex) => (
               <div key={realm.id} className="flex gap-2 items-end">
                 {realmIndex > 0 && (
-                  <Separator orientation="vertical" className="h-40" />
+                  <Separator orientation="vertical" className="h-24 sm:h-40" />
                 )}
                 <div className="flex flex-col gap-2">
                   {isMixed && (
-                    <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground px-1 whitespace-nowrap">
+                    <span className="hidden px-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground whitespace-nowrap sm:inline">
                       {realm.label}
                     </span>
                   )}
                   <div className="flex gap-2">
                     {TILE_GROUPS.map((group) => (
                       <div key={`${realm.id}-${group.name}`} className="flex flex-col gap-1">
-                        <span className="text-xs font-semibold text-muted-foreground px-1 whitespace-nowrap">
+                        <span className="px-1 text-[11px] font-semibold text-muted-foreground whitespace-nowrap sm:text-xs">
                           {group.name}
                         </span>
                         <div className="flex gap-1">
@@ -59,14 +59,12 @@ export default function TilePicker() {
                                   <TooltipTrigger asChild>
                                     <button
                                       className={cn(
-                                        "block border-2 rounded-md overflow-hidden transition-colors shrink-0",
+                                        "block h-[96px] w-[54px] shrink-0 overflow-hidden rounded-md border-2 transition-colors sm:h-[115px] sm:w-[65px]",
                                         isActive
                                           ? "border-primary ring-2 ring-primary/30"
                                           : "border-transparent hover:border-muted-foreground/30",
                                       )}
                                       style={{
-                                        width: 65,
-                                        height: 115,
                                         backgroundImage: `url('${getTexturePath(realm.id)}')`,
                                         backgroundRepeat: "no-repeat",
                                         backgroundPosition: `-${(tile.col * SPRITE_TILE_W) / 2 + 1}px -${(group.row * SPRITE_TILE_H) / 2}px`,

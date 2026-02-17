@@ -8,7 +8,7 @@ import CollectionLoader from "@/components/collection-loader";
 
 export default function Home() {
   return (
-    <main className="flex flex-col h-screen overflow-hidden">
+    <main className="flex h-dvh flex-col overflow-hidden">
       <Suspense fallback={null}>
         <CollectionLoader />
       </Suspense>

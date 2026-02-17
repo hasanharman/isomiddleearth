@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useMapStore } from "@/lib/store";
 import { SPRITE_TILE_H, SPRITE_TILE_W } from "@/lib/tiles";
 import {
@@ -10,10 +10,12 @@ import {
 } from "@/lib/textures";
 
 export default function IsoCanvas() {
+  const wrapperRef = useRef<HTMLDivElement>(null);
   const bgRef = useRef<HTMLCanvasElement>(null);
   const fgRef = useRef<HTMLCanvasElement>(null);
   const textureCacheRef = useRef<Map<string, HTMLImageElement>>(new Map());
   const isPlacingRef = useRef(false);
+  const [displayScale, setDisplayScale] = useState(1);
 
   const { map, gridSize, activeTool, setTile, clearTile, location } =
     useMapStore();
@@ -26,6 +28,25 @@ export default function IsoCanvas() {
 
   const originX = canvasWidth / 2;
   const originY = tileHeight * 2;
+
+  useEffect(() => {
+    const wrapper = wrapperRef.current;
+    if (!wrapper) return;
+
+    const updateScale = () => {
+      const availableWidth = Math.max(wrapper.clientWidth - 16, 1);
+      const availableHeight = Math.max(wrapper.clientHeight - 16, 1);
+      const widthScale = availableWidth / canvasWidth;
+      const heightScale = availableHeight / canvasHeight;
+      const nextScale = Math.min(1, widthScale, heightScale);
+      setDisplayScale(Number.isFinite(nextScale) && nextScale > 0 ? nextScale : 1);
+    };
+
+    updateScale();
+    const observer = new ResizeObserver(updateScale);
+    observer.observe(wrapper);
+    return () => observer.disconnect();
+  }, [canvasWidth, canvasHeight]);
 
   const getPosition = useCallback(
     (e: React.MouseEvent<HTMLCanvasElement>) => {
@@ -195,24 +216,28 @@ export default function IsoCanvas() {
 
   return (
     <div
+      ref={wrapperRef}
       id="iso-canvas-wrapper"
-      className="relative flex-1 overflow-auto flex items-center justify-center bg-muted/30"
+      className="relative flex flex-1 items-center justify-center overflow-hidden bg-muted/30 p-2"
     >
       <div
         className="relative"
-        style={{ width: canvasWidth, height: canvasHeight }}
+        style={{
+          width: Math.round(canvasWidth * displayScale),
+          height: Math.round(canvasHeight * displayScale),
+        }}
       >
         <canvas
           ref={bgRef}
           width={canvasWidth}
           height={canvasHeight}
-          className="absolute inset-0"
+          className="absolute inset-0 h-full w-full touch-none"
         />
         <canvas
           ref={fgRef}
           width={canvasWidth}
           height={canvasHeight}
-          className="absolute inset-0"
+          className="absolute inset-0 h-full w-full touch-none"
           onMouseDown={handleClick}
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUp}
