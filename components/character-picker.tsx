@@ -2,6 +2,7 @@
 
 import { useMemo } from "react";
 import { useMapStore } from "@/lib/store";
+import { useShallow } from "zustand/react/shallow";
 import {
   CHARACTERS,
   CHARACTER_REALMS,
@@ -18,7 +19,13 @@ import {
 import { MIXED_TEXTURE_PLACE_ID, TEXTURE_PLACES } from "@/lib/textures";
 
 export default function CharacterPicker() {
-  const { activeCharacterTool, setActiveCharacterTool, location } = useMapStore();
+  const { activeCharacterTool, setActiveCharacterTool, location } = useMapStore(
+    useShallow((state) => ({
+      activeCharacterTool: state.activeCharacterTool,
+      setActiveCharacterTool: state.setActiveCharacterTool,
+      location: state.location,
+    })),
+  );
   const locationLabel =
     location === MIXED_TEXTURE_PLACE_ID
       ? "Mixed"

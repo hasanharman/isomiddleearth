@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useMapStore } from "@/lib/store";
+import { useShallow } from "zustand/react/shallow";
 import { SPRITE_TILE_H, SPRITE_TILE_W, TILE_GROUPS } from "@/lib/tiles";
 import {
   getTilePath,
@@ -33,7 +34,19 @@ export default function IsoCanvas() {
     setCharacter,
     clearAt,
     location,
-  } = useMapStore();
+  } = useMapStore(
+    useShallow((state) => ({
+      map: state.map,
+      characterMap: state.characterMap,
+      gridSize: state.gridSize,
+      activeTool: state.activeTool,
+      activeCharacterTool: state.activeCharacterTool,
+      setTile: state.setTile,
+      setCharacter: state.setCharacter,
+      clearAt: state.clearAt,
+      location: state.location,
+    })),
+  );
 
   const tileWidth = 128;
   const tileHeight = 64;

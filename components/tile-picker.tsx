@@ -1,6 +1,7 @@
 "use client";
 
 import { useMapStore } from "@/lib/store";
+import { useShallow } from "zustand/react/shallow";
 import { TILE_GROUPS } from "@/lib/tiles";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
@@ -18,8 +19,21 @@ import {
 } from "@/components/ui/tooltip";
 
 export default function TilePicker() {
-  const { activeTool, setActiveTool, activeCharacterTool, setActiveCharacterTool, location } =
-    useMapStore();
+  const {
+    activeTool,
+    setActiveTool,
+    activeCharacterTool,
+    setActiveCharacterTool,
+    location,
+  } = useMapStore(
+    useShallow((state) => ({
+      activeTool: state.activeTool,
+      setActiveTool: state.setActiveTool,
+      activeCharacterTool: state.activeCharacterTool,
+      setActiveCharacterTool: state.setActiveCharacterTool,
+      location: state.location,
+    })),
+  );
   const isMixed = location === MIXED_TEXTURE_PLACE_ID;
   const visibleRealms = isMixed
     ? TEXTURE_PLACES

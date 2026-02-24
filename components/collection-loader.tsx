@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { useSearchParams } from "next/navigation";
 import { useMapStore } from "@/lib/store";
 import type { TileCoord } from "@/lib/store";
 import type { TexturePlaceId } from "@/lib/textures";
@@ -58,40 +57,36 @@ const isSnapshot = (
   return true;
 };
 
-export default function CollectionLoader() {
-  const searchParams = useSearchParams();
-  const collectionId = searchParams.get("collection");
+export type CollectionLoaderSnapshot = {
+  id: string;
+  map: TileCoord[][];
+  gridSize: number;
+  location: TexturePlaceId;
+};
+
+export default function CollectionLoader({
+  snapshot,
+}: {
+  snapshot?: CollectionLoaderSnapshot | null;
+}) {
   const loadSnapshot = useMapStore((state) => state.loadSnapshot);
   const loadedCollectionRef = useRef<string | null>(null);
 
   useEffect(() => {
-    if (!collectionId) return;
-    if (loadedCollectionRef.current === collectionId) return;
+    if (!snapshot) {
+      loadedCollectionRef.current = null;
+      return;
+    }
+    if (loadedCollectionRef.current === snapshot.id) return;
+    if (!isSnapshot(snapshot)) return;
 
-    const controller = new AbortController();
-
-    fetch(`/api/collections/${collectionId}`, { signal: controller.signal })
-      .then(async (res) => {
-        if (!res.ok) {
-          throw new Error("not found");
-        }
-        const payload = (await res.json()) as unknown;
-        if (!isSnapshot(payload)) {
-          throw new Error("invalid payload");
-        }
-        loadSnapshot({
-          map: payload.map as TileCoord[][],
-          gridSize: payload.gridSize,
-          location: payload.location as TexturePlaceId,
-        });
-        loadedCollectionRef.current = collectionId;
-      })
-      .catch(() => {
-        // Silent fail keeps the editor usable even if URL is invalid.
-      });
-
-    return () => controller.abort();
-  }, [collectionId, loadSnapshot]);
+    loadSnapshot({
+      map: snapshot.map,
+      gridSize: snapshot.gridSize,
+      location: snapshot.location,
+    });
+    loadedCollectionRef.current = snapshot.id;
+  }, [snapshot, loadSnapshot]);
 
   return null;
 }
