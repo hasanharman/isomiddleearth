@@ -1,169 +1,132 @@
 <div align="center">
   <img src="public/logo.png" alt="Iso Middle Earth Logo" width="180" />
   <h1>Iso Middle Earth</h1>
-  <p><strong>An isometric Middle-earth builder — craft maps across multiple realms, tile by tile.</strong></p>
+  <p><strong>An isometric Middle-earth builder for crafting maps across multiple realms, tile by tile.</strong></p>
 
   <p>
     <a href="#features">Features</a> •
     <a href="#demo">Demo</a> •
     <a href="#getting-started">Getting Started</a> •
     <a href="#usage">Usage</a> •
+    <a href="#json-format">JSON Format</a> •
     <a href="#collections">Collections</a> •
-    <a href="#tech-stack">Tech Stack</a> •
-    <a href="#contributing">Contributing</a> •
-    <a href="#sponsor">Sponsor</a>
+    <a href="#tech-stack">Tech Stack</a>
   </p>
 
   <p>
     <img src="https://img.shields.io/badge/Next.js-16-black?logo=next.js" alt="Next.js" />
     <img src="https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white" alt="React" />
     <img src="https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white" alt="TypeScript" />
-    <img src="https://img.shields.io/badge/pnpm-latest-F69220?logo=pnpm&logoColor=white" alt="pnpm" />
+    <img src="https://img.shields.io/badge/pnpm-10-F69220?logo=pnpm&logoColor=white" alt="pnpm" />
     <img src="https://img.shields.io/github/license/hasanharman/isomiddleearth" alt="License" />
   </p>
 </div>
-
----
 
 ## Demo
 
 ![Iso Middle Earth Preview](public/demo.png)
 
-> 🌐 **Live:** [isomiddleearth.vercel.app](https://isomiddleearth.vercel.app/)
-
----
+Live: [isomiddleearth.vercel.app](https://isomiddleearth.vercel.app/)
 
 ## Features
 
-| Feature | Description |
-|---|---|
-| 🗺️ **Isometric Canvas** | Place tiles on a beautiful isometric grid with hover preview |
-| 🌍 **Multi-Realm Maps** | Build with Shire, Gondor, Mordor, Lothlorien, Rohan, Moria, and Rivendell tiles |
-| 🧪 **Mixed Mode** | Use all realm tile variants in one map from a unified picker |
-| 📐 **Adjustable Grid Size** | Resize from 3×3 up to 20×20 via a slider |
-| 🎨 **504 Realm Tile Variants** | 72 base tile types across 7 realms, grouped by Terrain, Water & Bridges, Trees & Vegetation, Dwellings, Buildings, and Decorations |
-| 💾 **Save & Load** | Persist your builds to localStorage via Zustand — name, save, and restore anytime |
-| 📸 **Export as PNG** | One-click download of your creation as a clean PNG image |
-| 🖱️ **Click & Drag** | Paint tiles by holding the mouse — right-click to erase |
-| 🧩 **Grouped Tile Picker** | Bottom toolbar with labeled groups, horizontal scroll, and tooltips |
-
----
+- Isometric canvas with hover preview
+- 7 realms: `shire`, `gondor`, `mordor`, `lothlorien`, `rohan`, `moria`, `rivendell`
+- `mixed` mode for cross-realm builds
+- Adjustable grid size from `3x3` to `20x20`
+- 6 grouped tile categories: Terrain, Water & Bridges, Trees & Vegetation, Dwellings, Buildings, Decorations
+- Asset picker tabs for `Buildings` and `Characters`
+- Character overlays (currently includes 8 Hobbit sprites)
+- Paint with click/drag, right-click to clear
+- Undo support (`Cmd/Ctrl + Z`)
+- PNG export
+- JSON export/import from the toolbar
+- Community collections browser at `/collections` with pagination
+- Deep-link loading with `/?collection=<id>`
+- Persisted local state via Zustand (`localStorage`)
 
 ## Getting Started
 
 ### Prerequisites
 
-* [Node.js](https://nodejs.org/) 18+
-* [pnpm](https://pnpm.io/) 9+
+- [Node.js](https://nodejs.org/) 18+
+- [pnpm](https://pnpm.io/) 9+
 
 ### Installation
 
 ```bash
-# Clone the repo
 git clone https://github.com/hasanharman/isomiddleearth.git
 cd isomiddleearth
-
-# Install dependencies
 pnpm install
-
-# Start dev server
 pnpm dev
 ```
 
+Open [http://localhost:3000](http://localhost:3000).
+
 ## Usage
 
-1. Choose a realm from the top location selector or pick `Mixed`.
-2. Select a tile from the bottom picker and paint on the isometric grid.
-3. Right-click to erase tiles, and click-drag to paint quickly.
-4. Save/load maps locally or export your map as PNG.
+1. Pick a realm (or `Mixed`) from the top location selector.
+2. Choose an asset tab in the bottom bar:
+   - `Buildings` to place terrain/building tiles
+   - `Characters` to place character overlays
+3. Click or drag to paint.
+4. Right-click to clear (character clears first if present on that tile).
+5. Use toolbar actions for undo, grid resize, PNG export, and JSON export/import.
 
-## Tile Assets
+## JSON Format
 
-- Runtime source: `public/tiles/<realm>/r<row>-c<col>.png`
-- Single tile sprite size: `130x230` pixels
-- Isometric placement footprint on canvas: `128x64` pixels
-- Optional index file: `public/tiles/manifest.json`
+Toolbar JSON import/export expects this shape:
 
-### Character Overlays
-
-- Runtime source: `public/characters/<character-realm>/<character-id>.svg|png`
-- Character sprite canvas should also be `130x230` pixels (same as tile sprite canvas)
-- Recommended character figure footprint inside that canvas: around `44x88` pixels to `56x104` pixels
-- Anchor character feet near the tile anchor baseline (roughly the same visual base line as terrain sprites)
-- Characters render on top of terrain and occupy one tile cell
-- Included sample set: `public/characters/hobbits/hobbit-1.png` to `hobbit-8.png`
-
-### Add new tile items (flexible rows/cols)
-
-You can add any number of items per row. The app no longer assumes fixed `0..11` columns.
-
-1. Add tile PNG files with this naming pattern:
-   - `public/tiles/<realm>/r<row>-c<col>.png`
-   - Examples: `r0-c12.png`, `r0-c19.png`, `r1-c5.png`
-2. Register each tile in the picker config at `lib/tiles.ts`:
-   - Use the correct group `row` and tile `col`.
-   - You do not need to pad groups with `"Empty"` placeholders.
-   - You can add new groups with new `row` indices when needed.
-3. Restart the app (or refresh) and the tile will render in picker + canvas.
+```json
+{
+  "schemaVersion": 1,
+  "id": "my-map",
+  "name": "My Map",
+  "author": {
+    "name": "Anonymous",
+    "github": "your-github-username"
+  },
+  "createdAt": "2026-02-24T00:00:00.000Z",
+  "location": "mixed",
+  "gridSize": 7,
+  "map": [
+    [[0, 0, "shire"], [2, 4, "gondor"]],
+    [[1, 6, "mordor"], [3, 2, "rivendell"]]
+  ]
+}
+```
 
 Notes:
+- `map` tiles can be `[row, col]` or `[row, col, realm]`
+- `row` and `col` are non-negative integers
+- `gridSize` must be between `3` and `20`
+- current JSON import/export is tile-map based (character overlays are not part of this format yet)
 
-- Runtime rendering supports variable row/col values and falls back to `r0-c0` if a specific tile image is missing.
-- Collection validation now accepts tile coordinates as non-negative integers (`row >= 0`, `col >= 0`).
+## Tile and Character Assets
+
+- Tile source: `public/tiles/<realm>/r<row>-c<col>.png`
+- Character source: `public/characters/<character-realm>/<character-id>.png`
+- Sprite canvas size: `130x230`
+- Isometric tile footprint on canvas: `128x64`
+
+You can add new tile coordinates with any non-negative `row`/`col`; runtime falls back to `r0-c0` if a specific tile image is missing.
 
 ## Collections
 
-Shared maps are available at `/collections`.
+Community maps live in `collections/maps` and are listed at `/collections`.
 
-- Storage path: `collections/maps/<id>.json`
+- API endpoint: `GET /api/collections/:id`
 - Schema: `collections/schema/map.schema.json`
 - Docs: `collections/README.md`
-- CI validation: `.github/workflows/validate-collections.yml`
-
-### How to add a map
-
-1. Create your map in the app and note:
-   - `location` (realm or `mixed`)
-   - `gridSize` (3 to 20)
-   - `map` matrix of tiles
-2. Add a new file in `collections/maps`, for example `collections/maps/my-epic-map.json`.
-3. Ensure `id` matches the filename (without `.json`), using kebab-case.
-4. Validate locally:
+- Validation script:
 
 ```bash
 pnpm validate:collections
 ```
 
-5. Open a pull request.
+To load a collection directly in the editor:
 
-Example:
-
-```json
-{
-  "schemaVersion": 1,
-  "id": "my-epic-map",
-  "name": "My Epic Map",
-  "description": "A mixed-realm mountain pass.",
-  "author": {
-    "name": "Your Name",
-    "github": "your-github-username"
-  },
-  "createdAt": "2026-02-16T00:00:00.000Z",
-  "location": "mixed",
-  "gridSize": 7,
-  "tags": ["adventure", "mixed"],
-  "map": [
-    [
-      [0, 0, "shire"],
-      [2, 4, "gondor"]
-    ],
-    [
-      [1, 6, "mordor"],
-      [3, 2, "rivendell"]
-    ]
-  ]
-}
-```
+- `/?collection=<map-id>`
 
 ## Tech Stack
 
@@ -172,11 +135,8 @@ Example:
 - TypeScript
 - Zustand
 - Tailwind CSS
+- Radix UI / shadcn components
 
 ## Contributing
 
-Issues and pull requests are welcome at [hasanharman/isomiddleearth](https://github.com/hasanharman/isomiddleearth).
-
-## Sponsor
-
-Support development via [GitHub Sponsors](https://github.com/sponsors/hasanharman).
+Issues and pull requests are welcome: [hasanharman/isomiddleearth](https://github.com/hasanharman/isomiddleearth)
