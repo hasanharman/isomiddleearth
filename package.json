@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "validate:collections": "node scripts/validate-collections.mjs"
+    "validate:collections": "node scripts/validate-collections.mjs",
+    "tiles:slice": "python3 scripts/slice-tiles.py",
+    "tiles:manifest": "python3 scripts/slice-tiles.py"
   },
   "dependencies": {
     "@hugeicons/core-free-icons": "^3.1.1",

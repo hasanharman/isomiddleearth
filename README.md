@@ -77,6 +77,59 @@ pnpm dev
 3. Right-click to erase tiles, and click-drag to paint quickly.
 4. Save/load maps locally or export your map as PNG.
 
+## Tile Assets
+
+- Runtime source: `public/tiles/<realm>/r<row>-c<col>.png`
+- Single tile sprite size: `130x230` pixels
+- Isometric placement footprint on canvas: `128x64` pixels
+
+Manifest generation (tile-only workflow):
+
+```bash
+pnpm tiles:manifest
+```
+
+Requirements:
+
+- `python3`
+- `Pillow` (`python3 -m pip install Pillow`)
+
+Outputs:
+
+- Manifest: `public/tiles/manifest.json` (discovers actual rows/cols from files)
+
+Optional flags:
+
+```bash
+pnpm tiles:manifest -- --clean
+pnpm tiles:manifest -- --realms=shire,gondor
+pnpm tiles:manifest -- --output-dir=output/tiles
+```
+
+Optional legacy import from sprite sheets:
+
+```bash
+pnpm tiles:slice -- --input-dir=/absolute/path/to/sheets --output-dir=public/tiles
+```
+
+### Add new tile items (flexible rows/cols)
+
+You can add any number of items per row. The app no longer assumes fixed `0..11` columns.
+
+1. Add tile PNG files with this naming pattern:
+   - `public/tiles/<realm>/r<row>-c<col>.png`
+   - Examples: `r0-c12.png`, `r0-c19.png`, `r1-c5.png`
+2. Register each tile in the picker config at `lib/tiles.ts`:
+   - Use the correct group `row` and tile `col`.
+   - You do not need to pad groups with `"Empty"` placeholders.
+   - You can add new groups with new `row` indices when needed.
+3. Restart the app (or refresh) and the tile will render in picker + canvas.
+
+Notes:
+
+- Runtime rendering supports variable row/col values and falls back to `r0-c0` if a specific tile image is missing.
+- Collection validation now accepts tile coordinates as non-negative integers (`row >= 0`, `col >= 0`).
+
 ## Collections
 
 Shared maps are available at `/collections`.

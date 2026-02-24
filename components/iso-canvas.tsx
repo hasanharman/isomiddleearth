@@ -2,9 +2,9 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useMapStore } from "@/lib/store";
-import { SPRITE_TILE_H, SPRITE_TILE_W } from "@/lib/tiles";
+import { SPRITE_TILE_H, SPRITE_TILE_W, TILE_GROUPS } from "@/lib/tiles";
 import {
-  getTexturePath,
+  getTilePath,
   MIXED_TEXTURE_PLACE_ID,
   TEXTURE_PLACES,
 } from "@/lib/textures";
@@ -13,7 +13,7 @@ export default function IsoCanvas() {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const bgRef = useRef<HTMLCanvasElement>(null);
   const fgRef = useRef<HTMLCanvasElement>(null);
-  const textureCacheRef = useRef<Map<string, HTMLImageElement>>(new Map());
+  const tileCacheRef = useRef<Map<string, HTMLImageElement>>(new Map());
   const isPlacingRef = useRef(false);
   const [displayScale, setDisplayScale] = useState(1);
 
@@ -80,26 +80,22 @@ export default function IsoCanvas() {
       col: number,
       tileRealm?: string,
     ) => {
-      const texturePlace =
+      const realmId =
         location === MIXED_TEXTURE_PLACE_ID ? tileRealm ?? TEXTURE_PLACES[0].id : location;
-      const texturePath = getTexturePath(texturePlace);
-      const texture = textureCacheRef.current.get(texturePath);
-      if (!texture) return;
+      const tilePath = getTilePath(realmId, row, col);
+      const baseTilePath = getTilePath(realmId, 0, 0);
+      const tileImage =
+        tileCacheRef.current.get(tilePath) ?? tileCacheRef.current.get(baseTilePath);
+      if (!tileImage) return;
       ctx.save();
       ctx.translate(
         originX + (y - x) * (tileWidth / 2),
         originY + (x + y) * (tileHeight / 2),
       );
-      const sx = col * SPRITE_TILE_W;
-      const sy = row * SPRITE_TILE_H;
       ctx.drawImage(
-        texture,
-        sx,
-        sy,
-        SPRITE_TILE_W,
-        SPRITE_TILE_H,
+        tileImage,
         -SPRITE_TILE_W / 2,
-        -130, // ← was: -SPRITE_TILE_H + tileHeight (-166)
+        -130,
         SPRITE_TILE_W,
         SPRITE_TILE_H,
       );
@@ -119,42 +115,81 @@ export default function IsoCanvas() {
     }
   }, [map, gridSize, canvasWidth, canvasHeight, drawImageTile]);
 
-  // Load texture
+  const getTileCoordinates = useCallback(() => {
+    const coordKeys = new Set<string>();
+
+    // Always preload each realm's base tile as a fallback.
+    coordKeys.add("0:0");
+
+    for (const group of TILE_GROUPS) {
+      for (const tile of group.tiles) {
+        if (tile.label !== "Empty") {
+          coordKeys.add(`${group.row}:${tile.col}`);
+        }
+      }
+    }
+
+    for (const mapRow of map) {
+      for (const [row, col] of mapRow) {
+        if (Number.isInteger(row) && row >= 0 && Number.isInteger(col) && col >= 0) {
+          coordKeys.add(`${row}:${col}`);
+        }
+      }
+    }
+
+    return Array.from(coordKeys, (coordKey) => {
+      const [row, col] = coordKey.split(":").map(Number);
+      return { row, col };
+    });
+  }, [map]);
+
+  // Load all tile assets used by the current realm mode.
   useEffect(() => {
     let cancelled = false;
-    const loadTexture = (path: string) =>
+    const loadTile = (path: string) =>
       new Promise<void>((resolve, reject) => {
-        if (textureCacheRef.current.has(path)) {
+        if (tileCacheRef.current.has(path)) {
           resolve();
           return;
         }
         const img = new Image();
         img.src = path;
         img.onload = () => {
-          textureCacheRef.current.set(path, img);
+          tileCacheRef.current.set(path, img);
           resolve();
         };
         img.onerror = () => reject(new Error(path));
       });
 
-    const texturePaths =
+    const realmIds =
       location === MIXED_TEXTURE_PLACE_ID
-        ? TEXTURE_PLACES.map((place) => place.path)
-        : [getTexturePath(location)];
+        ? TEXTURE_PLACES.map((place) => place.id)
+        : [location];
 
-    Promise.all(texturePaths.map((path) => loadTexture(path)))
-      .then(() => {
-        if (!cancelled) drawMap();
-      })
-      .catch((error) => {
-        console.error(`Failed to load texture for location: ${location}`);
-        console.error(error);
-      });
+    const tileCoords = getTileCoordinates();
+    const tilePaths = Array.from(
+      new Set(
+        realmIds.flatMap((realmId) =>
+          tileCoords.map(({ row, col }) => getTilePath(realmId, row, col)),
+        ),
+      ),
+    );
+
+    Promise.allSettled(tilePaths.map((path) => loadTile(path))).then((results) => {
+      if (cancelled) return;
+      const failed = results.filter((result) => result.status === "rejected");
+      if (failed.length > 0) {
+        console.error(
+          `Failed to load ${failed.length} tile asset(s) for location: ${location}`,
+        );
+      }
+      drawMap();
+    });
 
     return () => {
       cancelled = true;
     };
-  }, [location, drawMap]);
+  }, [location, getTileCoordinates, drawMap]);
 
   // Redraw on map/grid changes
   useEffect(() => {

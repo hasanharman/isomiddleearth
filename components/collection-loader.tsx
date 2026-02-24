@@ -28,8 +28,8 @@ const isTile = (value: unknown): value is [number, number, string?] => {
     return false;
   }
   const [row, col, realm] = value;
-  if (!Number.isInteger(row) || row < 0 || row > 5) return false;
-  if (!Number.isInteger(col) || col < 0 || col > 11) return false;
+  if (!Number.isInteger(row) || row < 0) return false;
+  if (!Number.isInteger(col) || col < 0) return false;
   if (realm !== undefined && (typeof realm !== "string" || !REALMS.has(realm))) {
     return false;
   }

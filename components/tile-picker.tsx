@@ -1,12 +1,12 @@
 "use client";
 
 import { useMapStore } from "@/lib/store";
-import { TILE_GROUPS, SPRITE_TILE_W, SPRITE_TILE_H } from "@/lib/tiles";
+import { TILE_GROUPS } from "@/lib/tiles";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import {
-  getTexturePath,
+  getTilePath,
   MIXED_TEXTURE_PLACE_ID,
   TEXTURE_PLACES,
 } from "@/lib/textures";
@@ -65,10 +65,14 @@ export default function TilePicker() {
                                           : "border-transparent hover:border-muted-foreground/30",
                                       )}
                                       style={{
-                                        backgroundImage: `url('${getTexturePath(realm.id)}')`,
+                                        backgroundImage: `url('${getTilePath(
+                                          realm.id,
+                                          group.row,
+                                          tile.col,
+                                        )}')`,
                                         backgroundRepeat: "no-repeat",
-                                        backgroundPosition: `-${(tile.col * SPRITE_TILE_W) / 2 + 1}px -${(group.row * SPRITE_TILE_H) / 2}px`,
-                                        backgroundSize: `${(SPRITE_TILE_W * 12) / 2}px ${(SPRITE_TILE_H * 5.9) / 2}px`,
+                                        backgroundPosition: "center",
+                                        backgroundSize: "cover",
                                       }}
                                       onClick={() =>
                                         setActiveTool(

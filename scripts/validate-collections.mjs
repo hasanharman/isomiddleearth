@@ -39,11 +39,11 @@ const validateTile = (tile, filePath, rowIndex, colIndex, location) => {
   }
 
   const [row, col, realm] = tile;
-  if (!Number.isInteger(row) || row < 0 || row > 5) {
-    fail(`${filePath}: map[${rowIndex}][${colIndex}][0] must be integer 0..5.`);
+  if (!Number.isInteger(row) || row < 0) {
+    fail(`${filePath}: map[${rowIndex}][${colIndex}][0] must be integer >= 0.`);
   }
-  if (!Number.isInteger(col) || col < 0 || col > 11) {
-    fail(`${filePath}: map[${rowIndex}][${colIndex}][1] must be integer 0..11.`);
+  if (!Number.isInteger(col) || col < 0) {
+    fail(`${filePath}: map[${rowIndex}][${colIndex}][1] must be integer >= 0.`);
   }
 
   if (realm !== undefined && !REALMS.has(realm)) {
