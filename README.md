@@ -82,35 +82,7 @@ pnpm dev
 - Runtime source: `public/tiles/<realm>/r<row>-c<col>.png`
 - Single tile sprite size: `130x230` pixels
 - Isometric placement footprint on canvas: `128x64` pixels
-
-Manifest generation (tile-only workflow):
-
-```bash
-pnpm tiles:manifest
-```
-
-Requirements:
-
-- `python3`
-- `Pillow` (`python3 -m pip install Pillow`)
-
-Outputs:
-
-- Manifest: `public/tiles/manifest.json` (discovers actual rows/cols from files)
-
-Optional flags:
-
-```bash
-pnpm tiles:manifest -- --clean
-pnpm tiles:manifest -- --realms=shire,gondor
-pnpm tiles:manifest -- --output-dir=output/tiles
-```
-
-Optional legacy import from sprite sheets:
-
-```bash
-pnpm tiles:slice -- --input-dir=/absolute/path/to/sheets --output-dir=public/tiles
-```
+- Optional index file: `public/tiles/manifest.json`
 
 ### Add new tile items (flexible rows/cols)
 
