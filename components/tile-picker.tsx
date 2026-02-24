@@ -27,7 +27,13 @@ export default function TilePicker() {
 
   return (
     <ScrollArea className="h-full w-full">
-      <div className="flex gap-3 p-2 sm:gap-4 sm:p-3">
+      <div className="flex flex-col gap-2 p-2 sm:p-3">
+        {!isMixed && visibleRealms[0] && (
+          <span className="px-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground whitespace-nowrap">
+            {visibleRealms[0].label}
+          </span>
+        )}
+        <div className="flex gap-3 sm:gap-4">
         <TooltipProvider delayDuration={200}>
           {visibleRealms.map((realm, realmIndex) => (
             <div key={realm.id} className="flex gap-2 items-end">
@@ -103,6 +109,7 @@ export default function TilePicker() {
             </div>
           ))}
         </TooltipProvider>
+        </div>
       </div>
       <ScrollBar orientation="horizontal" />
     </ScrollArea>

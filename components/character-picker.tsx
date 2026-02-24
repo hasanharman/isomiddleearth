@@ -15,9 +15,14 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { MIXED_TEXTURE_PLACE_ID, TEXTURE_PLACES } from "@/lib/textures";
 
 export default function CharacterPicker() {
-  const { activeCharacterTool, setActiveCharacterTool } = useMapStore();
+  const { activeCharacterTool, setActiveCharacterTool, location } = useMapStore();
+  const locationLabel =
+    location === MIXED_TEXTURE_PLACE_ID
+      ? "Mixed"
+      : (TEXTURE_PLACES.find((place) => place.id === location)?.label ?? "Shire");
 
   const groupedCharacters = useMemo(
     () =>
@@ -30,13 +35,14 @@ export default function CharacterPicker() {
 
   return (
     <ScrollArea className="h-full w-full bg-background/80">
-      <div className="flex gap-3 p-2 sm:gap-4 sm:p-3">
+      <div className="flex flex-col gap-2 p-2 sm:p-3">
+        <span className="px-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground whitespace-nowrap">
+          {locationLabel}
+        </span>
+        <div className="flex gap-3 sm:gap-4">
         <TooltipProvider delayDuration={200}>
           {groupedCharacters.map((realm) => (
             <div key={realm.id} className="flex flex-col gap-1">
-              <span className="px-1 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground/80">
-                Realm
-              </span>
               <span className="px-1 text-[11px] font-semibold text-muted-foreground whitespace-nowrap sm:text-xs">
                 {realm.label}
               </span>
@@ -72,6 +78,7 @@ export default function CharacterPicker() {
             </div>
           ))}
         </TooltipProvider>
+        </div>
       </div>
       <ScrollBar orientation="horizontal" />
     </ScrollArea>
