@@ -28,8 +28,8 @@ const isValidTile = (tile: unknown): tile is TileCoord => {
   }
 
   const [row, col, realm] = tile;
-  if (!Number.isInteger(row) || row < 0 || row > 5) return false;
-  if (!Number.isInteger(col) || col < 0 || col > 11) return false;
+  if (!Number.isInteger(row) || row < 0) return false;
+  if (!Number.isInteger(col) || col < 0) return false;
   if (
     realm !== undefined &&
     realm !== "shire" &&

@@ -1,10 +1,8 @@
 import { Suspense } from "react";
 import IsoCanvas from "@/components/iso-canvas";
-import TilePicker from "@/components/tile-picker";
+import AssetPicker from "@/components/asset-picker";
 import Toolbar from "@/components/toolbar";
 import CollectionLoader from "@/components/collection-loader";
-
-
 
 export default function Home() {
   return (
@@ -14,7 +12,7 @@ export default function Home() {
       </Suspense>
       <Toolbar />
       <IsoCanvas />
-      <TilePicker />
+      <AssetPicker />
     </main>
   );
 }

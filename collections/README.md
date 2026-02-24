@@ -31,8 +31,8 @@ Each tile in the map matrix is one of:
 
 Ranges:
 
-- `row`: `0..5`
-- `col`: `0..11`
+- `row`: integer `>= 0`
+- `col`: integer `>= 0`
 - `realm`: only for mixed mode, one of `shire`, `gondor`, `mordor`, `lothlorien`, `rohan`, `moria`, `rivendell`
 
 ## Validate locally

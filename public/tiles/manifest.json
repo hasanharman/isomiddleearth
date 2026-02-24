@@ -1,0 +1,3357 @@
+{
+  "generatedAt": "2026-02-24T08:52:37.443191Z",
+  "tile": {
+    "width": 130,
+    "height": 230,
+    "sheetColumns": 12,
+    "sheetRows": 6
+  },
+  "realms": [
+    {
+      "id": "gondor",
+      "tileCount": 72,
+      "maxRow": 5,
+      "maxCol": 11,
+      "rows": [
+        {
+          "row": 0,
+          "count": 12,
+          "cols": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        },
+        {
+          "row": 1,
+          "count": 12,
+          "cols": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        },
+        {
+          "row": 2,
+          "count": 12,
+          "cols": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        },
+        {
+          "row": 3,
+          "count": 12,
+          "cols": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        },
+        {
+          "row": 4,
+          "count": 12,
+          "cols": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        },
+        {
+          "row": 5,
+          "count": 12,
+          "cols": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        }
+      ],
+      "tiles": [
+        {
+          "row": 0,
+          "col": 0,
+          "path": "public/tiles/gondor/r0-c0.png"
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "path": "public/tiles/gondor/r0-c1.png"
+        },
+        {
+          "row": 0,
+          "col": 2,
+          "path": "public/tiles/gondor/r0-c2.png"
+        },
+        {
+          "row": 0,
+          "col": 3,
+          "path": "public/tiles/gondor/r0-c3.png"
+        },
+        {
+          "row": 0,
+          "col": 4,
+          "path": "public/tiles/gondor/r0-c4.png"
+        },
+        {
+          "row": 0,
+          "col": 5,
+          "path": "public/tiles/gondor/r0-c5.png"
+        },
+        {
+          "row": 0,
+          "col": 6,
+          "path": "public/tiles/gondor/r0-c6.png"
+        },
+        {
+          "row": 0,
+          "col": 7,
+          "path": "public/tiles/gondor/r0-c7.png"
+        },
+        {
+          "row": 0,
+          "col": 8,
+          "path": "public/tiles/gondor/r0-c8.png"
+        },
+        {
+          "row": 0,
+          "col": 9,
+          "path": "public/tiles/gondor/r0-c9.png"
+        },
+        {
+          "row": 0,
+          "col": 10,
+          "path": "public/tiles/gondor/r0-c10.png"
+        },
+        {
+          "row": 0,
+          "col": 11,
+          "path": "public/tiles/gondor/r0-c11.png"
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "path": "public/tiles/gondor/r1-c0.png"
+        },
+        {
+          "row": 1,
+          "col": 1,
+          "path": "public/tiles/gondor/r1-c1.png"
+        },
+        {
+          "row": 1,
+          "col": 2,
+          "path": "public/tiles/gondor/r1-c2.png"
+        },
+        {
+          "row": 1,
+          "col": 3,
+          "path": "public/tiles/gondor/r1-c3.png"
+        },
+        {
+          "row": 1,
+          "col": 4,
+          "path": "public/tiles/gondor/r1-c4.png"
+        },
+        {
+          "row": 1,
+          "col": 5,
+          "path": "public/tiles/gondor/r1-c5.png"
+        },
+        {
+          "row": 1,
+          "col": 6,
+          "path": "public/tiles/gondor/r1-c6.png"
+        },
+        {
+          "row": 1,
+          "col": 7,
+          "path": "public/tiles/gondor/r1-c7.png"
+        },
+        {
+          "row": 1,
+          "col": 8,
+          "path": "public/tiles/gondor/r1-c8.png"
+        },
+        {
+          "row": 1,
+          "col": 9,
+          "path": "public/tiles/gondor/r1-c9.png"
+        },
+        {
+          "row": 1,
+          "col": 10,
+          "path": "public/tiles/gondor/r1-c10.png"
+        },
+        {
+          "row": 1,
+          "col": 11,
+          "path": "public/tiles/gondor/r1-c11.png"
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "path": "public/tiles/gondor/r2-c0.png"
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "path": "public/tiles/gondor/r2-c1.png"
+        },
+        {
+          "row": 2,
+          "col": 2,
+          "path": "public/tiles/gondor/r2-c2.png"
+        },
+        {
+          "row": 2,
+          "col": 3,
+          "path": "public/tiles/gondor/r2-c3.png"
+        },
+        {
+          "row": 2,
+          "col": 4,
+          "path": "public/tiles/gondor/r2-c4.png"
+        },
+        {
+          "row": 2,
+          "col": 5,
+          "path": "public/tiles/gondor/r2-c5.png"
+        },
+        {
+          "row": 2,
+          "col": 6,
+          "path": "public/tiles/gondor/r2-c6.png"
+        },
+        {
+          "row": 2,
+          "col": 7,
+          "path": "public/tiles/gondor/r2-c7.png"
+        },
+        {
+          "row": 2,
+          "col": 8,
+          "path": "public/tiles/gondor/r2-c8.png"
+        },
+        {
+          "row": 2,
+          "col": 9,
+          "path": "public/tiles/gondor/r2-c9.png"
+        },
+        {
+          "row": 2,
+          "col": 10,
+          "path": "public/tiles/gondor/r2-c10.png"
+        },
+        {
+          "row": 2,
+          "col": 11,
+          "path": "public/tiles/gondor/r2-c11.png"
+        },
+        {
+          "row": 3,
+          "col": 0,
+          "path": "public/tiles/gondor/r3-c0.png"
+        },
+        {
+          "row": 3,
+          "col": 1,
+          "path": "public/tiles/gondor/r3-c1.png"
+        },
+        {
+          "row": 3,
+          "col": 2,
+          "path": "public/tiles/gondor/r3-c2.png"
+        },
+        {
+          "row": 3,
+          "col": 3,
+          "path": "public/tiles/gondor/r3-c3.png"
+        },
+        {
+          "row": 3,
+          "col": 4,
+          "path": "public/tiles/gondor/r3-c4.png"
+        },
+        {
+          "row": 3,
+          "col": 5,
+          "path": "public/tiles/gondor/r3-c5.png"
+        },
+        {
+          "row": 3,
+          "col": 6,
+          "path": "public/tiles/gondor/r3-c6.png"
+        },
+        {
+          "row": 3,
+          "col": 7,
+          "path": "public/tiles/gondor/r3-c7.png"
+        },
+        {
+          "row": 3,
+          "col": 8,
+          "path": "public/tiles/gondor/r3-c8.png"
+        },
+        {
+          "row": 3,
+          "col": 9,
+          "path": "public/tiles/gondor/r3-c9.png"
+        },
+        {
+          "row": 3,
+          "col": 10,
+          "path": "public/tiles/gondor/r3-c10.png"
+        },
+        {
+          "row": 3,
+          "col": 11,
+          "path": "public/tiles/gondor/r3-c11.png"
+        },
+        {
+          "row": 4,
+          "col": 0,
+          "path": "public/tiles/gondor/r4-c0.png"
+        },
+        {
+          "row": 4,
+          "col": 1,
+          "path": "public/tiles/gondor/r4-c1.png"
+        },
+        {
+          "row": 4,
+          "col": 2,
+          "path": "public/tiles/gondor/r4-c2.png"
+        },
+        {
+          "row": 4,
+          "col": 3,
+          "path": "public/tiles/gondor/r4-c3.png"
+        },
+        {
+          "row": 4,
+          "col": 4,
+          "path": "public/tiles/gondor/r4-c4.png"
+        },
+        {
+          "row": 4,
+          "col": 5,
+          "path": "public/tiles/gondor/r4-c5.png"
+        },
+        {
+          "row": 4,
+          "col": 6,
+          "path": "public/tiles/gondor/r4-c6.png"
+        },
+        {
+          "row": 4,
+          "col": 7,
+          "path": "public/tiles/gondor/r4-c7.png"
+        },
+        {
+          "row": 4,
+          "col": 8,
+          "path": "public/tiles/gondor/r4-c8.png"
+        },
+        {
+          "row": 4,
+          "col": 9,
+          "path": "public/tiles/gondor/r4-c9.png"
+        },
+        {
+          "row": 4,
+          "col": 10,
+          "path": "public/tiles/gondor/r4-c10.png"
+        },
+        {
+          "row": 4,
+          "col": 11,
+          "path": "public/tiles/gondor/r4-c11.png"
+        },
+        {
+          "row": 5,
+          "col": 0,
+          "path": "public/tiles/gondor/r5-c0.png"
+        },
+        {
+          "row": 5,
+          "col": 1,
+          "path": "public/tiles/gondor/r5-c1.png"
+        },
+        {
+          "row": 5,
+          "col": 2,
+          "path": "public/tiles/gondor/r5-c2.png"
+        },
+        {
+          "row": 5,
+          "col": 3,
+          "path": "public/tiles/gondor/r5-c3.png"
+        },
+        {
+          "row": 5,
+          "col": 4,
+          "path": "public/tiles/gondor/r5-c4.png"
+        },
+        {
+          "row": 5,
+          "col": 5,
+          "path": "public/tiles/gondor/r5-c5.png"
+        },
+        {
+          "row": 5,
+          "col": 6,
+          "path": "public/tiles/gondor/r5-c6.png"
+        },
+        {
+          "row": 5,
+          "col": 7,
+          "path": "public/tiles/gondor/r5-c7.png"
+        },
+        {
+          "row": 5,
+          "col": 8,
+          "path": "public/tiles/gondor/r5-c8.png"
+        },
+        {
+          "row": 5,
+          "col": 9,
+          "path": "public/tiles/gondor/r5-c9.png"
+        },
+        {
+          "row": 5,
+          "col": 10,
+          "path": "public/tiles/gondor/r5-c10.png"
+        },
+        {
+          "row": 5,
+          "col": 11,
+          "path": "public/tiles/gondor/r5-c11.png"
+        }
+      ]
+    },
+    {
+      "id": "lothlorien",
+      "tileCount": 72,
+      "maxRow": 5,
+      "maxCol": 11,
+      "rows": [
+        {
+          "row": 0,
+          "count": 12,
+          "cols": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        },
+        {
+          "row": 1,
+          "count": 12,
+          "cols": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        },
+        {
+          "row": 2,
+          "count": 12,
+          "cols": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        },
+        {
+          "row": 3,
+          "count": 12,
+          "cols": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        },
+        {
+          "row": 4,
+          "count": 12,
+          "cols": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        },
+        {
+          "row": 5,
+          "count": 12,
+          "cols": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        }
+      ],
+      "tiles": [
+        {
+          "row": 0,
+          "col": 0,
+          "path": "public/tiles/lothlorien/r0-c0.png"
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "path": "public/tiles/lothlorien/r0-c1.png"
+        },
+        {
+          "row": 0,
+          "col": 2,
+          "path": "public/tiles/lothlorien/r0-c2.png"
+        },
+        {
+          "row": 0,
+          "col": 3,
+          "path": "public/tiles/lothlorien/r0-c3.png"
+        },
+        {
+          "row": 0,
+          "col": 4,
+          "path": "public/tiles/lothlorien/r0-c4.png"
+        },
+        {
+          "row": 0,
+          "col": 5,
+          "path": "public/tiles/lothlorien/r0-c5.png"
+        },
+        {
+          "row": 0,
+          "col": 6,
+          "path": "public/tiles/lothlorien/r0-c6.png"
+        },
+        {
+          "row": 0,
+          "col": 7,
+          "path": "public/tiles/lothlorien/r0-c7.png"
+        },
+        {
+          "row": 0,
+          "col": 8,
+          "path": "public/tiles/lothlorien/r0-c8.png"
+        },
+        {
+          "row": 0,
+          "col": 9,
+          "path": "public/tiles/lothlorien/r0-c9.png"
+        },
+        {
+          "row": 0,
+          "col": 10,
+          "path": "public/tiles/lothlorien/r0-c10.png"
+        },
+        {
+          "row": 0,
+          "col": 11,
+          "path": "public/tiles/lothlorien/r0-c11.png"
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "path": "public/tiles/lothlorien/r1-c0.png"
+        },
+        {
+          "row": 1,
+          "col": 1,
+          "path": "public/tiles/lothlorien/r1-c1.png"
+        },
+        {
+          "row": 1,
+          "col": 2,
+          "path": "public/tiles/lothlorien/r1-c2.png"
+        },
+        {
+          "row": 1,
+          "col": 3,
+          "path": "public/tiles/lothlorien/r1-c3.png"
+        },
+        {
+          "row": 1,
+          "col": 4,
+          "path": "public/tiles/lothlorien/r1-c4.png"
+        },
+        {
+          "row": 1,
+          "col": 5,
+          "path": "public/tiles/lothlorien/r1-c5.png"
+        },
+        {
+          "row": 1,
+          "col": 6,
+          "path": "public/tiles/lothlorien/r1-c6.png"
+        },
+        {
+          "row": 1,
+          "col": 7,
+          "path": "public/tiles/lothlorien/r1-c7.png"
+        },
+        {
+          "row": 1,
+          "col": 8,
+          "path": "public/tiles/lothlorien/r1-c8.png"
+        },
+        {
+          "row": 1,
+          "col": 9,
+          "path": "public/tiles/lothlorien/r1-c9.png"
+        },
+        {
+          "row": 1,
+          "col": 10,
+          "path": "public/tiles/lothlorien/r1-c10.png"
+        },
+        {
+          "row": 1,
+          "col": 11,
+          "path": "public/tiles/lothlorien/r1-c11.png"
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "path": "public/tiles/lothlorien/r2-c0.png"
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "path": "public/tiles/lothlorien/r2-c1.png"
+        },
+        {
+          "row": 2,
+          "col": 2,
+          "path": "public/tiles/lothlorien/r2-c2.png"
+        },
+        {
+          "row": 2,
+          "col": 3,
+          "path": "public/tiles/lothlorien/r2-c3.png"
+        },
+        {
+          "row": 2,
+          "col": 4,
+          "path": "public/tiles/lothlorien/r2-c4.png"
+        },
+        {
+          "row": 2,
+          "col": 5,
+          "path": "public/tiles/lothlorien/r2-c5.png"
+        },
+        {
+          "row": 2,
+          "col": 6,
+          "path": "public/tiles/lothlorien/r2-c6.png"
+        },
+        {
+          "row": 2,
+          "col": 7,
+          "path": "public/tiles/lothlorien/r2-c7.png"
+        },
+        {
+          "row": 2,
+          "col": 8,
+          "path": "public/tiles/lothlorien/r2-c8.png"
+        },
+        {
+          "row": 2,
+          "col": 9,
+          "path": "public/tiles/lothlorien/r2-c9.png"
+        },
+        {
+          "row": 2,
+          "col": 10,
+          "path": "public/tiles/lothlorien/r2-c10.png"
+        },
+        {
+          "row": 2,
+          "col": 11,
+          "path": "public/tiles/lothlorien/r2-c11.png"
+        },
+        {
+          "row": 3,
+          "col": 0,
+          "path": "public/tiles/lothlorien/r3-c0.png"
+        },
+        {
+          "row": 3,
+          "col": 1,
+          "path": "public/tiles/lothlorien/r3-c1.png"
+        },
+        {
+          "row": 3,
+          "col": 2,
+          "path": "public/tiles/lothlorien/r3-c2.png"
+        },
+        {
+          "row": 3,
+          "col": 3,
+          "path": "public/tiles/lothlorien/r3-c3.png"
+        },
+        {
+          "row": 3,
+          "col": 4,
+          "path": "public/tiles/lothlorien/r3-c4.png"
+        },
+        {
+          "row": 3,
+          "col": 5,
+          "path": "public/tiles/lothlorien/r3-c5.png"
+        },
+        {
+          "row": 3,
+          "col": 6,
+          "path": "public/tiles/lothlorien/r3-c6.png"
+        },
+        {
+          "row": 3,
+          "col": 7,
+          "path": "public/tiles/lothlorien/r3-c7.png"
+        },
+        {
+          "row": 3,
+          "col": 8,
+          "path": "public/tiles/lothlorien/r3-c8.png"
+        },
+        {
+          "row": 3,
+          "col": 9,
+          "path": "public/tiles/lothlorien/r3-c9.png"
+        },
+        {
+          "row": 3,
+          "col": 10,
+          "path": "public/tiles/lothlorien/r3-c10.png"
+        },
+        {
+          "row": 3,
+          "col": 11,
+          "path": "public/tiles/lothlorien/r3-c11.png"
+        },
+        {
+          "row": 4,
+          "col": 0,
+          "path": "public/tiles/lothlorien/r4-c0.png"
+        },
+        {
+          "row": 4,
+          "col": 1,
+          "path": "public/tiles/lothlorien/r4-c1.png"
+        },
+        {
+          "row": 4,
+          "col": 2,
+          "path": "public/tiles/lothlorien/r4-c2.png"
+        },
+        {
+          "row": 4,
+          "col": 3,
+          "path": "public/tiles/lothlorien/r4-c3.png"
+        },
+        {
+          "row": 4,
+          "col": 4,
+          "path": "public/tiles/lothlorien/r4-c4.png"
+        },
+        {
+          "row": 4,
+          "col": 5,
+          "path": "public/tiles/lothlorien/r4-c5.png"
+        },
+        {
+          "row": 4,
+          "col": 6,
+          "path": "public/tiles/lothlorien/r4-c6.png"
+        },
+        {
+          "row": 4,
+          "col": 7,
+          "path": "public/tiles/lothlorien/r4-c7.png"
+        },
+        {
+          "row": 4,
+          "col": 8,
+          "path": "public/tiles/lothlorien/r4-c8.png"
+        },
+        {
+          "row": 4,
+          "col": 9,
+          "path": "public/tiles/lothlorien/r4-c9.png"
+        },
+        {
+          "row": 4,
+          "col": 10,
+          "path": "public/tiles/lothlorien/r4-c10.png"
+        },
+        {
+          "row": 4,
+          "col": 11,
+          "path": "public/tiles/lothlorien/r4-c11.png"
+        },
+        {
+          "row": 5,
+          "col": 0,
+          "path": "public/tiles/lothlorien/r5-c0.png"
+        },
+        {
+          "row": 5,
+          "col": 1,
+          "path": "public/tiles/lothlorien/r5-c1.png"
+        },
+        {
+          "row": 5,
+          "col": 2,
+          "path": "public/tiles/lothlorien/r5-c2.png"
+        },
+        {
+          "row": 5,
+          "col": 3,
+          "path": "public/tiles/lothlorien/r5-c3.png"
+        },
+        {
+          "row": 5,
+          "col": 4,
+          "path": "public/tiles/lothlorien/r5-c4.png"
+        },
+        {
+          "row": 5,
+          "col": 5,
+          "path": "public/tiles/lothlorien/r5-c5.png"
+        },
+        {
+          "row": 5,
+          "col": 6,
+          "path": "public/tiles/lothlorien/r5-c6.png"
+        },
+        {
+          "row": 5,
+          "col": 7,
+          "path": "public/tiles/lothlorien/r5-c7.png"
+        },
+        {
+          "row": 5,
+          "col": 8,
+          "path": "public/tiles/lothlorien/r5-c8.png"
+        },
+        {
+          "row": 5,
+          "col": 9,
+          "path": "public/tiles/lothlorien/r5-c9.png"
+        },
+        {
+          "row": 5,
+          "col": 10,
+          "path": "public/tiles/lothlorien/r5-c10.png"
+        },
+        {
+          "row": 5,
+          "col": 11,
+          "path": "public/tiles/lothlorien/r5-c11.png"
+        }
+      ]
+    },
+    {
+      "id": "mordor",
+      "tileCount": 72,
+      "maxRow": 5,
+      "maxCol": 11,
+      "rows": [
+        {
+          "row": 0,
+          "count": 12,
+          "cols": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        },
+        {
+          "row": 1,
+          "count": 12,
+          "cols": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        },
+        {
+          "row": 2,
+          "count": 12,
+          "cols": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        },
+        {
+          "row": 3,
+          "count": 12,
+          "cols": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        },
+        {
+          "row": 4,
+          "count": 12,
+          "cols": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        },
+        {
+          "row": 5,
+          "count": 12,
+          "cols": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        }
+      ],
+      "tiles": [
+        {
+          "row": 0,
+          "col": 0,
+          "path": "public/tiles/mordor/r0-c0.png"
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "path": "public/tiles/mordor/r0-c1.png"
+        },
+        {
+          "row": 0,
+          "col": 2,
+          "path": "public/tiles/mordor/r0-c2.png"
+        },
+        {
+          "row": 0,
+          "col": 3,
+          "path": "public/tiles/mordor/r0-c3.png"
+        },
+        {
+          "row": 0,
+          "col": 4,
+          "path": "public/tiles/mordor/r0-c4.png"
+        },
+        {
+          "row": 0,
+          "col": 5,
+          "path": "public/tiles/mordor/r0-c5.png"
+        },
+        {
+          "row": 0,
+          "col": 6,
+          "path": "public/tiles/mordor/r0-c6.png"
+        },
+        {
+          "row": 0,
+          "col": 7,
+          "path": "public/tiles/mordor/r0-c7.png"
+        },
+        {
+          "row": 0,
+          "col": 8,
+          "path": "public/tiles/mordor/r0-c8.png"
+        },
+        {
+          "row": 0,
+          "col": 9,
+          "path": "public/tiles/mordor/r0-c9.png"
+        },
+        {
+          "row": 0,
+          "col": 10,
+          "path": "public/tiles/mordor/r0-c10.png"
+        },
+        {
+          "row": 0,
+          "col": 11,
+          "path": "public/tiles/mordor/r0-c11.png"
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "path": "public/tiles/mordor/r1-c0.png"
+        },
+        {
+          "row": 1,
+          "col": 1,
+          "path": "public/tiles/mordor/r1-c1.png"
+        },
+        {
+          "row": 1,
+          "col": 2,
+          "path": "public/tiles/mordor/r1-c2.png"
+        },
+        {
+          "row": 1,
+          "col": 3,
+          "path": "public/tiles/mordor/r1-c3.png"
+        },
+        {
+          "row": 1,
+          "col": 4,
+          "path": "public/tiles/mordor/r1-c4.png"
+        },
+        {
+          "row": 1,
+          "col": 5,
+          "path": "public/tiles/mordor/r1-c5.png"
+        },
+        {
+          "row": 1,
+          "col": 6,
+          "path": "public/tiles/mordor/r1-c6.png"
+        },
+        {
+          "row": 1,
+          "col": 7,
+          "path": "public/tiles/mordor/r1-c7.png"
+        },
+        {
+          "row": 1,
+          "col": 8,
+          "path": "public/tiles/mordor/r1-c8.png"
+        },
+        {
+          "row": 1,
+          "col": 9,
+          "path": "public/tiles/mordor/r1-c9.png"
+        },
+        {
+          "row": 1,
+          "col": 10,
+          "path": "public/tiles/mordor/r1-c10.png"
+        },
+        {
+          "row": 1,
+          "col": 11,
+          "path": "public/tiles/mordor/r1-c11.png"
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "path": "public/tiles/mordor/r2-c0.png"
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "path": "public/tiles/mordor/r2-c1.png"
+        },
+        {
+          "row": 2,
+          "col": 2,
+          "path": "public/tiles/mordor/r2-c2.png"
+        },
+        {
+          "row": 2,
+          "col": 3,
+          "path": "public/tiles/mordor/r2-c3.png"
+        },
+        {
+          "row": 2,
+          "col": 4,
+          "path": "public/tiles/mordor/r2-c4.png"
+        },
+        {
+          "row": 2,
+          "col": 5,
+          "path": "public/tiles/mordor/r2-c5.png"
+        },
+        {
+          "row": 2,
+          "col": 6,
+          "path": "public/tiles/mordor/r2-c6.png"
+        },
+        {
+          "row": 2,
+          "col": 7,
+          "path": "public/tiles/mordor/r2-c7.png"
+        },
+        {
+          "row": 2,
+          "col": 8,
+          "path": "public/tiles/mordor/r2-c8.png"
+        },
+        {
+          "row": 2,
+          "col": 9,
+          "path": "public/tiles/mordor/r2-c9.png"
+        },
+        {
+          "row": 2,
+          "col": 10,
+          "path": "public/tiles/mordor/r2-c10.png"
+        },
+        {
+          "row": 2,
+          "col": 11,
+          "path": "public/tiles/mordor/r2-c11.png"
+        },
+        {
+          "row": 3,
+          "col": 0,
+          "path": "public/tiles/mordor/r3-c0.png"
+        },
+        {
+          "row": 3,
+          "col": 1,
+          "path": "public/tiles/mordor/r3-c1.png"
+        },
+        {
+          "row": 3,
+          "col": 2,
+          "path": "public/tiles/mordor/r3-c2.png"
+        },
+        {
+          "row": 3,
+          "col": 3,
+          "path": "public/tiles/mordor/r3-c3.png"
+        },
+        {
+          "row": 3,
+          "col": 4,
+          "path": "public/tiles/mordor/r3-c4.png"
+        },
+        {
+          "row": 3,
+          "col": 5,
+          "path": "public/tiles/mordor/r3-c5.png"
+        },
+        {
+          "row": 3,
+          "col": 6,
+          "path": "public/tiles/mordor/r3-c6.png"
+        },
+        {
+          "row": 3,
+          "col": 7,
+          "path": "public/tiles/mordor/r3-c7.png"
+        },
+        {
+          "row": 3,
+          "col": 8,
+          "path": "public/tiles/mordor/r3-c8.png"
+        },
+        {
+          "row": 3,
+          "col": 9,
+          "path": "public/tiles/mordor/r3-c9.png"
+        },
+        {
+          "row": 3,
+          "col": 10,
+          "path": "public/tiles/mordor/r3-c10.png"
+        },
+        {
+          "row": 3,
+          "col": 11,
+          "path": "public/tiles/mordor/r3-c11.png"
+        },
+        {
+          "row": 4,
+          "col": 0,
+          "path": "public/tiles/mordor/r4-c0.png"
+        },
+        {
+          "row": 4,
+          "col": 1,
+          "path": "public/tiles/mordor/r4-c1.png"
+        },
+        {
+          "row": 4,
+          "col": 2,
+          "path": "public/tiles/mordor/r4-c2.png"
+        },
+        {
+          "row": 4,
+          "col": 3,
+          "path": "public/tiles/mordor/r4-c3.png"
+        },
+        {
+          "row": 4,
+          "col": 4,
+          "path": "public/tiles/mordor/r4-c4.png"
+        },
+        {
+          "row": 4,
+          "col": 5,
+          "path": "public/tiles/mordor/r4-c5.png"
+        },
+        {
+          "row": 4,
+          "col": 6,
+          "path": "public/tiles/mordor/r4-c6.png"
+        },
+        {
+          "row": 4,
+          "col": 7,
+          "path": "public/tiles/mordor/r4-c7.png"
+        },
+        {
+          "row": 4,
+          "col": 8,
+          "path": "public/tiles/mordor/r4-c8.png"
+        },
+        {
+          "row": 4,
+          "col": 9,
+          "path": "public/tiles/mordor/r4-c9.png"
+        },
+        {
+          "row": 4,
+          "col": 10,
+          "path": "public/tiles/mordor/r4-c10.png"
+        },
+        {
+          "row": 4,
+          "col": 11,
+          "path": "public/tiles/mordor/r4-c11.png"
+        },
+        {
+          "row": 5,
+          "col": 0,
+          "path": "public/tiles/mordor/r5-c0.png"
+        },
+        {
+          "row": 5,
+          "col": 1,
+          "path": "public/tiles/mordor/r5-c1.png"
+        },
+        {
+          "row": 5,
+          "col": 2,
+          "path": "public/tiles/mordor/r5-c2.png"
+        },
+        {
+          "row": 5,
+          "col": 3,
+          "path": "public/tiles/mordor/r5-c3.png"
+        },
+        {
+          "row": 5,
+          "col": 4,
+          "path": "public/tiles/mordor/r5-c4.png"
+        },
+        {
+          "row": 5,
+          "col": 5,
+          "path": "public/tiles/mordor/r5-c5.png"
+        },
+        {
+          "row": 5,
+          "col": 6,
+          "path": "public/tiles/mordor/r5-c6.png"
+        },
+        {
+          "row": 5,
+          "col": 7,
+          "path": "public/tiles/mordor/r5-c7.png"
+        },
+        {
+          "row": 5,
+          "col": 8,
+          "path": "public/tiles/mordor/r5-c8.png"
+        },
+        {
+          "row": 5,
+          "col": 9,
+          "path": "public/tiles/mordor/r5-c9.png"
+        },
+        {
+          "row": 5,
+          "col": 10,
+          "path": "public/tiles/mordor/r5-c10.png"
+        },
+        {
+          "row": 5,
+          "col": 11,
+          "path": "public/tiles/mordor/r5-c11.png"
+        }
+      ]
+    },
+    {
+      "id": "moria",
+      "tileCount": 72,
+      "maxRow": 5,
+      "maxCol": 11,
+      "rows": [
+        {
+          "row": 0,
+          "count": 12,
+          "cols": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        },
+        {
+          "row": 1,
+          "count": 12,
+          "cols": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        },
+        {
+          "row": 2,
+          "count": 12,
+          "cols": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        },
+        {
+          "row": 3,
+          "count": 12,
+          "cols": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        },
+        {
+          "row": 4,
+          "count": 12,
+          "cols": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        },
+        {
+          "row": 5,
+          "count": 12,
+          "cols": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        }
+      ],
+      "tiles": [
+        {
+          "row": 0,
+          "col": 0,
+          "path": "public/tiles/moria/r0-c0.png"
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "path": "public/tiles/moria/r0-c1.png"
+        },
+        {
+          "row": 0,
+          "col": 2,
+          "path": "public/tiles/moria/r0-c2.png"
+        },
+        {
+          "row": 0,
+          "col": 3,
+          "path": "public/tiles/moria/r0-c3.png"
+        },
+        {
+          "row": 0,
+          "col": 4,
+          "path": "public/tiles/moria/r0-c4.png"
+        },
+        {
+          "row": 0,
+          "col": 5,
+          "path": "public/tiles/moria/r0-c5.png"
+        },
+        {
+          "row": 0,
+          "col": 6,
+          "path": "public/tiles/moria/r0-c6.png"
+        },
+        {
+          "row": 0,
+          "col": 7,
+          "path": "public/tiles/moria/r0-c7.png"
+        },
+        {
+          "row": 0,
+          "col": 8,
+          "path": "public/tiles/moria/r0-c8.png"
+        },
+        {
+          "row": 0,
+          "col": 9,
+          "path": "public/tiles/moria/r0-c9.png"
+        },
+        {
+          "row": 0,
+          "col": 10,
+          "path": "public/tiles/moria/r0-c10.png"
+        },
+        {
+          "row": 0,
+          "col": 11,
+          "path": "public/tiles/moria/r0-c11.png"
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "path": "public/tiles/moria/r1-c0.png"
+        },
+        {
+          "row": 1,
+          "col": 1,
+          "path": "public/tiles/moria/r1-c1.png"
+        },
+        {
+          "row": 1,
+          "col": 2,
+          "path": "public/tiles/moria/r1-c2.png"
+        },
+        {
+          "row": 1,
+          "col": 3,
+          "path": "public/tiles/moria/r1-c3.png"
+        },
+        {
+          "row": 1,
+          "col": 4,
+          "path": "public/tiles/moria/r1-c4.png"
+        },
+        {
+          "row": 1,
+          "col": 5,
+          "path": "public/tiles/moria/r1-c5.png"
+        },
+        {
+          "row": 1,
+          "col": 6,
+          "path": "public/tiles/moria/r1-c6.png"
+        },
+        {
+          "row": 1,
+          "col": 7,
+          "path": "public/tiles/moria/r1-c7.png"
+        },
+        {
+          "row": 1,
+          "col": 8,
+          "path": "public/tiles/moria/r1-c8.png"
+        },
+        {
+          "row": 1,
+          "col": 9,
+          "path": "public/tiles/moria/r1-c9.png"
+        },
+        {
+          "row": 1,
+          "col": 10,
+          "path": "public/tiles/moria/r1-c10.png"
+        },
+        {
+          "row": 1,
+          "col": 11,
+          "path": "public/tiles/moria/r1-c11.png"
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "path": "public/tiles/moria/r2-c0.png"
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "path": "public/tiles/moria/r2-c1.png"
+        },
+        {
+          "row": 2,
+          "col": 2,
+          "path": "public/tiles/moria/r2-c2.png"
+        },
+        {
+          "row": 2,
+          "col": 3,
+          "path": "public/tiles/moria/r2-c3.png"
+        },
+        {
+          "row": 2,
+          "col": 4,
+          "path": "public/tiles/moria/r2-c4.png"
+        },
+        {
+          "row": 2,
+          "col": 5,
+          "path": "public/tiles/moria/r2-c5.png"
+        },
+        {
+          "row": 2,
+          "col": 6,
+          "path": "public/tiles/moria/r2-c6.png"
+        },
+        {
+          "row": 2,
+          "col": 7,
+          "path": "public/tiles/moria/r2-c7.png"
+        },
+        {
+          "row": 2,
+          "col": 8,
+          "path": "public/tiles/moria/r2-c8.png"
+        },
+        {
+          "row": 2,
+          "col": 9,
+          "path": "public/tiles/moria/r2-c9.png"
+        },
+        {
+          "row": 2,
+          "col": 10,
+          "path": "public/tiles/moria/r2-c10.png"
+        },
+        {
+          "row": 2,
+          "col": 11,
+          "path": "public/tiles/moria/r2-c11.png"
+        },
+        {
+          "row": 3,
+          "col": 0,
+          "path": "public/tiles/moria/r3-c0.png"
+        },
+        {
+          "row": 3,
+          "col": 1,
+          "path": "public/tiles/moria/r3-c1.png"
+        },
+        {
+          "row": 3,
+          "col": 2,
+          "path": "public/tiles/moria/r3-c2.png"
+        },
+        {
+          "row": 3,
+          "col": 3,
+          "path": "public/tiles/moria/r3-c3.png"
+        },
+        {
+          "row": 3,
+          "col": 4,
+          "path": "public/tiles/moria/r3-c4.png"
+        },
+        {
+          "row": 3,
+          "col": 5,
+          "path": "public/tiles/moria/r3-c5.png"
+        },
+        {
+          "row": 3,
+          "col": 6,
+          "path": "public/tiles/moria/r3-c6.png"
+        },
+        {
+          "row": 3,
+          "col": 7,
+          "path": "public/tiles/moria/r3-c7.png"
+        },
+        {
+          "row": 3,
+          "col": 8,
+          "path": "public/tiles/moria/r3-c8.png"
+        },
+        {
+          "row": 3,
+          "col": 9,
+          "path": "public/tiles/moria/r3-c9.png"
+        },
+        {
+          "row": 3,
+          "col": 10,
+          "path": "public/tiles/moria/r3-c10.png"
+        },
+        {
+          "row": 3,
+          "col": 11,
+          "path": "public/tiles/moria/r3-c11.png"
+        },
+        {
+          "row": 4,
+          "col": 0,
+          "path": "public/tiles/moria/r4-c0.png"
+        },
+        {
+          "row": 4,
+          "col": 1,
+          "path": "public/tiles/moria/r4-c1.png"
+        },
+        {
+          "row": 4,
+          "col": 2,
+          "path": "public/tiles/moria/r4-c2.png"
+        },
+        {
+          "row": 4,
+          "col": 3,
+          "path": "public/tiles/moria/r4-c3.png"
+        },
+        {
+          "row": 4,
+          "col": 4,
+          "path": "public/tiles/moria/r4-c4.png"
+        },
+        {
+          "row": 4,
+          "col": 5,
+          "path": "public/tiles/moria/r4-c5.png"
+        },
+        {
+          "row": 4,
+          "col": 6,
+          "path": "public/tiles/moria/r4-c6.png"
+        },
+        {
+          "row": 4,
+          "col": 7,
+          "path": "public/tiles/moria/r4-c7.png"
+        },
+        {
+          "row": 4,
+          "col": 8,
+          "path": "public/tiles/moria/r4-c8.png"
+        },
+        {
+          "row": 4,
+          "col": 9,
+          "path": "public/tiles/moria/r4-c9.png"
+        },
+        {
+          "row": 4,
+          "col": 10,
+          "path": "public/tiles/moria/r4-c10.png"
+        },
+        {
+          "row": 4,
+          "col": 11,
+          "path": "public/tiles/moria/r4-c11.png"
+        },
+        {
+          "row": 5,
+          "col": 0,
+          "path": "public/tiles/moria/r5-c0.png"
+        },
+        {
+          "row": 5,
+          "col": 1,
+          "path": "public/tiles/moria/r5-c1.png"
+        },
+        {
+          "row": 5,
+          "col": 2,
+          "path": "public/tiles/moria/r5-c2.png"
+        },
+        {
+          "row": 5,
+          "col": 3,
+          "path": "public/tiles/moria/r5-c3.png"
+        },
+        {
+          "row": 5,
+          "col": 4,
+          "path": "public/tiles/moria/r5-c4.png"
+        },
+        {
+          "row": 5,
+          "col": 5,
+          "path": "public/tiles/moria/r5-c5.png"
+        },
+        {
+          "row": 5,
+          "col": 6,
+          "path": "public/tiles/moria/r5-c6.png"
+        },
+        {
+          "row": 5,
+          "col": 7,
+          "path": "public/tiles/moria/r5-c7.png"
+        },
+        {
+          "row": 5,
+          "col": 8,
+          "path": "public/tiles/moria/r5-c8.png"
+        },
+        {
+          "row": 5,
+          "col": 9,
+          "path": "public/tiles/moria/r5-c9.png"
+        },
+        {
+          "row": 5,
+          "col": 10,
+          "path": "public/tiles/moria/r5-c10.png"
+        },
+        {
+          "row": 5,
+          "col": 11,
+          "path": "public/tiles/moria/r5-c11.png"
+        }
+      ]
+    },
+    {
+      "id": "rivendell",
+      "tileCount": 72,
+      "maxRow": 5,
+      "maxCol": 11,
+      "rows": [
+        {
+          "row": 0,
+          "count": 12,
+          "cols": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        },
+        {
+          "row": 1,
+          "count": 12,
+          "cols": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        },
+        {
+          "row": 2,
+          "count": 12,
+          "cols": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        },
+        {
+          "row": 3,
+          "count": 12,
+          "cols": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        },
+        {
+          "row": 4,
+          "count": 12,
+          "cols": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        },
+        {
+          "row": 5,
+          "count": 12,
+          "cols": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        }
+      ],
+      "tiles": [
+        {
+          "row": 0,
+          "col": 0,
+          "path": "public/tiles/rivendell/r0-c0.png"
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "path": "public/tiles/rivendell/r0-c1.png"
+        },
+        {
+          "row": 0,
+          "col": 2,
+          "path": "public/tiles/rivendell/r0-c2.png"
+        },
+        {
+          "row": 0,
+          "col": 3,
+          "path": "public/tiles/rivendell/r0-c3.png"
+        },
+        {
+          "row": 0,
+          "col": 4,
+          "path": "public/tiles/rivendell/r0-c4.png"
+        },
+        {
+          "row": 0,
+          "col": 5,
+          "path": "public/tiles/rivendell/r0-c5.png"
+        },
+        {
+          "row": 0,
+          "col": 6,
+          "path": "public/tiles/rivendell/r0-c6.png"
+        },
+        {
+          "row": 0,
+          "col": 7,
+          "path": "public/tiles/rivendell/r0-c7.png"
+        },
+        {
+          "row": 0,
+          "col": 8,
+          "path": "public/tiles/rivendell/r0-c8.png"
+        },
+        {
+          "row": 0,
+          "col": 9,
+          "path": "public/tiles/rivendell/r0-c9.png"
+        },
+        {
+          "row": 0,
+          "col": 10,
+          "path": "public/tiles/rivendell/r0-c10.png"
+        },
+        {
+          "row": 0,
+          "col": 11,
+          "path": "public/tiles/rivendell/r0-c11.png"
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "path": "public/tiles/rivendell/r1-c0.png"
+        },
+        {
+          "row": 1,
+          "col": 1,
+          "path": "public/tiles/rivendell/r1-c1.png"
+        },
+        {
+          "row": 1,
+          "col": 2,
+          "path": "public/tiles/rivendell/r1-c2.png"
+        },
+        {
+          "row": 1,
+          "col": 3,
+          "path": "public/tiles/rivendell/r1-c3.png"
+        },
+        {
+          "row": 1,
+          "col": 4,
+          "path": "public/tiles/rivendell/r1-c4.png"
+        },
+        {
+          "row": 1,
+          "col": 5,
+          "path": "public/tiles/rivendell/r1-c5.png"
+        },
+        {
+          "row": 1,
+          "col": 6,
+          "path": "public/tiles/rivendell/r1-c6.png"
+        },
+        {
+          "row": 1,
+          "col": 7,
+          "path": "public/tiles/rivendell/r1-c7.png"
+        },
+        {
+          "row": 1,
+          "col": 8,
+          "path": "public/tiles/rivendell/r1-c8.png"
+        },
+        {
+          "row": 1,
+          "col": 9,
+          "path": "public/tiles/rivendell/r1-c9.png"
+        },
+        {
+          "row": 1,
+          "col": 10,
+          "path": "public/tiles/rivendell/r1-c10.png"
+        },
+        {
+          "row": 1,
+          "col": 11,
+          "path": "public/tiles/rivendell/r1-c11.png"
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "path": "public/tiles/rivendell/r2-c0.png"
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "path": "public/tiles/rivendell/r2-c1.png"
+        },
+        {
+          "row": 2,
+          "col": 2,
+          "path": "public/tiles/rivendell/r2-c2.png"
+        },
+        {
+          "row": 2,
+          "col": 3,
+          "path": "public/tiles/rivendell/r2-c3.png"
+        },
+        {
+          "row": 2,
+          "col": 4,
+          "path": "public/tiles/rivendell/r2-c4.png"
+        },
+        {
+          "row": 2,
+          "col": 5,
+          "path": "public/tiles/rivendell/r2-c5.png"
+        },
+        {
+          "row": 2,
+          "col": 6,
+          "path": "public/tiles/rivendell/r2-c6.png"
+        },
+        {
+          "row": 2,
+          "col": 7,
+          "path": "public/tiles/rivendell/r2-c7.png"
+        },
+        {
+          "row": 2,
+          "col": 8,
+          "path": "public/tiles/rivendell/r2-c8.png"
+        },
+        {
+          "row": 2,
+          "col": 9,
+          "path": "public/tiles/rivendell/r2-c9.png"
+        },
+        {
+          "row": 2,
+          "col": 10,
+          "path": "public/tiles/rivendell/r2-c10.png"
+        },
+        {
+          "row": 2,
+          "col": 11,
+          "path": "public/tiles/rivendell/r2-c11.png"
+        },
+        {
+          "row": 3,
+          "col": 0,
+          "path": "public/tiles/rivendell/r3-c0.png"
+        },
+        {
+          "row": 3,
+          "col": 1,
+          "path": "public/tiles/rivendell/r3-c1.png"
+        },
+        {
+          "row": 3,
+          "col": 2,
+          "path": "public/tiles/rivendell/r3-c2.png"
+        },
+        {
+          "row": 3,
+          "col": 3,
+          "path": "public/tiles/rivendell/r3-c3.png"
+        },
+        {
+          "row": 3,
+          "col": 4,
+          "path": "public/tiles/rivendell/r3-c4.png"
+        },
+        {
+          "row": 3,
+          "col": 5,
+          "path": "public/tiles/rivendell/r3-c5.png"
+        },
+        {
+          "row": 3,
+          "col": 6,
+          "path": "public/tiles/rivendell/r3-c6.png"
+        },
+        {
+          "row": 3,
+          "col": 7,
+          "path": "public/tiles/rivendell/r3-c7.png"
+        },
+        {
+          "row": 3,
+          "col": 8,
+          "path": "public/tiles/rivendell/r3-c8.png"
+        },
+        {
+          "row": 3,
+          "col": 9,
+          "path": "public/tiles/rivendell/r3-c9.png"
+        },
+        {
+          "row": 3,
+          "col": 10,
+          "path": "public/tiles/rivendell/r3-c10.png"
+        },
+        {
+          "row": 3,
+          "col": 11,
+          "path": "public/tiles/rivendell/r3-c11.png"
+        },
+        {
+          "row": 4,
+          "col": 0,
+          "path": "public/tiles/rivendell/r4-c0.png"
+        },
+        {
+          "row": 4,
+          "col": 1,
+          "path": "public/tiles/rivendell/r4-c1.png"
+        },
+        {
+          "row": 4,
+          "col": 2,
+          "path": "public/tiles/rivendell/r4-c2.png"
+        },
+        {
+          "row": 4,
+          "col": 3,
+          "path": "public/tiles/rivendell/r4-c3.png"
+        },
+        {
+          "row": 4,
+          "col": 4,
+          "path": "public/tiles/rivendell/r4-c4.png"
+        },
+        {
+          "row": 4,
+          "col": 5,
+          "path": "public/tiles/rivendell/r4-c5.png"
+        },
+        {
+          "row": 4,
+          "col": 6,
+          "path": "public/tiles/rivendell/r4-c6.png"
+        },
+        {
+          "row": 4,
+          "col": 7,
+          "path": "public/tiles/rivendell/r4-c7.png"
+        },
+        {
+          "row": 4,
+          "col": 8,
+          "path": "public/tiles/rivendell/r4-c8.png"
+        },
+        {
+          "row": 4,
+          "col": 9,
+          "path": "public/tiles/rivendell/r4-c9.png"
+        },
+        {
+          "row": 4,
+          "col": 10,
+          "path": "public/tiles/rivendell/r4-c10.png"
+        },
+        {
+          "row": 4,
+          "col": 11,
+          "path": "public/tiles/rivendell/r4-c11.png"
+        },
+        {
+          "row": 5,
+          "col": 0,
+          "path": "public/tiles/rivendell/r5-c0.png"
+        },
+        {
+          "row": 5,
+          "col": 1,
+          "path": "public/tiles/rivendell/r5-c1.png"
+        },
+        {
+          "row": 5,
+          "col": 2,
+          "path": "public/tiles/rivendell/r5-c2.png"
+        },
+        {
+          "row": 5,
+          "col": 3,
+          "path": "public/tiles/rivendell/r5-c3.png"
+        },
+        {
+          "row": 5,
+          "col": 4,
+          "path": "public/tiles/rivendell/r5-c4.png"
+        },
+        {
+          "row": 5,
+          "col": 5,
+          "path": "public/tiles/rivendell/r5-c5.png"
+        },
+        {
+          "row": 5,
+          "col": 6,
+          "path": "public/tiles/rivendell/r5-c6.png"
+        },
+        {
+          "row": 5,
+          "col": 7,
+          "path": "public/tiles/rivendell/r5-c7.png"
+        },
+        {
+          "row": 5,
+          "col": 8,
+          "path": "public/tiles/rivendell/r5-c8.png"
+        },
+        {
+          "row": 5,
+          "col": 9,
+          "path": "public/tiles/rivendell/r5-c9.png"
+        },
+        {
+          "row": 5,
+          "col": 10,
+          "path": "public/tiles/rivendell/r5-c10.png"
+        },
+        {
+          "row": 5,
+          "col": 11,
+          "path": "public/tiles/rivendell/r5-c11.png"
+        }
+      ]
+    },
+    {
+      "id": "rohan",
+      "tileCount": 72,
+      "maxRow": 5,
+      "maxCol": 11,
+      "rows": [
+        {
+          "row": 0,
+          "count": 12,
+          "cols": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        },
+        {
+          "row": 1,
+          "count": 12,
+          "cols": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        },
+        {
+          "row": 2,
+          "count": 12,
+          "cols": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        },
+        {
+          "row": 3,
+          "count": 12,
+          "cols": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        },
+        {
+          "row": 4,
+          "count": 12,
+          "cols": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        },
+        {
+          "row": 5,
+          "count": 12,
+          "cols": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        }
+      ],
+      "tiles": [
+        {
+          "row": 0,
+          "col": 0,
+          "path": "public/tiles/rohan/r0-c0.png"
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "path": "public/tiles/rohan/r0-c1.png"
+        },
+        {
+          "row": 0,
+          "col": 2,
+          "path": "public/tiles/rohan/r0-c2.png"
+        },
+        {
+          "row": 0,
+          "col": 3,
+          "path": "public/tiles/rohan/r0-c3.png"
+        },
+        {
+          "row": 0,
+          "col": 4,
+          "path": "public/tiles/rohan/r0-c4.png"
+        },
+        {
+          "row": 0,
+          "col": 5,
+          "path": "public/tiles/rohan/r0-c5.png"
+        },
+        {
+          "row": 0,
+          "col": 6,
+          "path": "public/tiles/rohan/r0-c6.png"
+        },
+        {
+          "row": 0,
+          "col": 7,
+          "path": "public/tiles/rohan/r0-c7.png"
+        },
+        {
+          "row": 0,
+          "col": 8,
+          "path": "public/tiles/rohan/r0-c8.png"
+        },
+        {
+          "row": 0,
+          "col": 9,
+          "path": "public/tiles/rohan/r0-c9.png"
+        },
+        {
+          "row": 0,
+          "col": 10,
+          "path": "public/tiles/rohan/r0-c10.png"
+        },
+        {
+          "row": 0,
+          "col": 11,
+          "path": "public/tiles/rohan/r0-c11.png"
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "path": "public/tiles/rohan/r1-c0.png"
+        },
+        {
+          "row": 1,
+          "col": 1,
+          "path": "public/tiles/rohan/r1-c1.png"
+        },
+        {
+          "row": 1,
+          "col": 2,
+          "path": "public/tiles/rohan/r1-c2.png"
+        },
+        {
+          "row": 1,
+          "col": 3,
+          "path": "public/tiles/rohan/r1-c3.png"
+        },
+        {
+          "row": 1,
+          "col": 4,
+          "path": "public/tiles/rohan/r1-c4.png"
+        },
+        {
+          "row": 1,
+          "col": 5,
+          "path": "public/tiles/rohan/r1-c5.png"
+        },
+        {
+          "row": 1,
+          "col": 6,
+          "path": "public/tiles/rohan/r1-c6.png"
+        },
+        {
+          "row": 1,
+          "col": 7,
+          "path": "public/tiles/rohan/r1-c7.png"
+        },
+        {
+          "row": 1,
+          "col": 8,
+          "path": "public/tiles/rohan/r1-c8.png"
+        },
+        {
+          "row": 1,
+          "col": 9,
+          "path": "public/tiles/rohan/r1-c9.png"
+        },
+        {
+          "row": 1,
+          "col": 10,
+          "path": "public/tiles/rohan/r1-c10.png"
+        },
+        {
+          "row": 1,
+          "col": 11,
+          "path": "public/tiles/rohan/r1-c11.png"
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "path": "public/tiles/rohan/r2-c0.png"
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "path": "public/tiles/rohan/r2-c1.png"
+        },
+        {
+          "row": 2,
+          "col": 2,
+          "path": "public/tiles/rohan/r2-c2.png"
+        },
+        {
+          "row": 2,
+          "col": 3,
+          "path": "public/tiles/rohan/r2-c3.png"
+        },
+        {
+          "row": 2,
+          "col": 4,
+          "path": "public/tiles/rohan/r2-c4.png"
+        },
+        {
+          "row": 2,
+          "col": 5,
+          "path": "public/tiles/rohan/r2-c5.png"
+        },
+        {
+          "row": 2,
+          "col": 6,
+          "path": "public/tiles/rohan/r2-c6.png"
+        },
+        {
+          "row": 2,
+          "col": 7,
+          "path": "public/tiles/rohan/r2-c7.png"
+        },
+        {
+          "row": 2,
+          "col": 8,
+          "path": "public/tiles/rohan/r2-c8.png"
+        },
+        {
+          "row": 2,
+          "col": 9,
+          "path": "public/tiles/rohan/r2-c9.png"
+        },
+        {
+          "row": 2,
+          "col": 10,
+          "path": "public/tiles/rohan/r2-c10.png"
+        },
+        {
+          "row": 2,
+          "col": 11,
+          "path": "public/tiles/rohan/r2-c11.png"
+        },
+        {
+          "row": 3,
+          "col": 0,
+          "path": "public/tiles/rohan/r3-c0.png"
+        },
+        {
+          "row": 3,
+          "col": 1,
+          "path": "public/tiles/rohan/r3-c1.png"
+        },
+        {
+          "row": 3,
+          "col": 2,
+          "path": "public/tiles/rohan/r3-c2.png"
+        },
+        {
+          "row": 3,
+          "col": 3,
+          "path": "public/tiles/rohan/r3-c3.png"
+        },
+        {
+          "row": 3,
+          "col": 4,
+          "path": "public/tiles/rohan/r3-c4.png"
+        },
+        {
+          "row": 3,
+          "col": 5,
+          "path": "public/tiles/rohan/r3-c5.png"
+        },
+        {
+          "row": 3,
+          "col": 6,
+          "path": "public/tiles/rohan/r3-c6.png"
+        },
+        {
+          "row": 3,
+          "col": 7,
+          "path": "public/tiles/rohan/r3-c7.png"
+        },
+        {
+          "row": 3,
+          "col": 8,
+          "path": "public/tiles/rohan/r3-c8.png"
+        },
+        {
+          "row": 3,
+          "col": 9,
+          "path": "public/tiles/rohan/r3-c9.png"
+        },
+        {
+          "row": 3,
+          "col": 10,
+          "path": "public/tiles/rohan/r3-c10.png"
+        },
+        {
+          "row": 3,
+          "col": 11,
+          "path": "public/tiles/rohan/r3-c11.png"
+        },
+        {
+          "row": 4,
+          "col": 0,
+          "path": "public/tiles/rohan/r4-c0.png"
+        },
+        {
+          "row": 4,
+          "col": 1,
+          "path": "public/tiles/rohan/r4-c1.png"
+        },
+        {
+          "row": 4,
+          "col": 2,
+          "path": "public/tiles/rohan/r4-c2.png"
+        },
+        {
+          "row": 4,
+          "col": 3,
+          "path": "public/tiles/rohan/r4-c3.png"
+        },
+        {
+          "row": 4,
+          "col": 4,
+          "path": "public/tiles/rohan/r4-c4.png"
+        },
+        {
+          "row": 4,
+          "col": 5,
+          "path": "public/tiles/rohan/r4-c5.png"
+        },
+        {
+          "row": 4,
+          "col": 6,
+          "path": "public/tiles/rohan/r4-c6.png"
+        },
+        {
+          "row": 4,
+          "col": 7,
+          "path": "public/tiles/rohan/r4-c7.png"
+        },
+        {
+          "row": 4,
+          "col": 8,
+          "path": "public/tiles/rohan/r4-c8.png"
+        },
+        {
+          "row": 4,
+          "col": 9,
+          "path": "public/tiles/rohan/r4-c9.png"
+        },
+        {
+          "row": 4,
+          "col": 10,
+          "path": "public/tiles/rohan/r4-c10.png"
+        },
+        {
+          "row": 4,
+          "col": 11,
+          "path": "public/tiles/rohan/r4-c11.png"
+        },
+        {
+          "row": 5,
+          "col": 0,
+          "path": "public/tiles/rohan/r5-c0.png"
+        },
+        {
+          "row": 5,
+          "col": 1,
+          "path": "public/tiles/rohan/r5-c1.png"
+        },
+        {
+          "row": 5,
+          "col": 2,
+          "path": "public/tiles/rohan/r5-c2.png"
+        },
+        {
+          "row": 5,
+          "col": 3,
+          "path": "public/tiles/rohan/r5-c3.png"
+        },
+        {
+          "row": 5,
+          "col": 4,
+          "path": "public/tiles/rohan/r5-c4.png"
+        },
+        {
+          "row": 5,
+          "col": 5,
+          "path": "public/tiles/rohan/r5-c5.png"
+        },
+        {
+          "row": 5,
+          "col": 6,
+          "path": "public/tiles/rohan/r5-c6.png"
+        },
+        {
+          "row": 5,
+          "col": 7,
+          "path": "public/tiles/rohan/r5-c7.png"
+        },
+        {
+          "row": 5,
+          "col": 8,
+          "path": "public/tiles/rohan/r5-c8.png"
+        },
+        {
+          "row": 5,
+          "col": 9,
+          "path": "public/tiles/rohan/r5-c9.png"
+        },
+        {
+          "row": 5,
+          "col": 10,
+          "path": "public/tiles/rohan/r5-c10.png"
+        },
+        {
+          "row": 5,
+          "col": 11,
+          "path": "public/tiles/rohan/r5-c11.png"
+        }
+      ]
+    },
+    {
+      "id": "shire",
+      "tileCount": 72,
+      "maxRow": 5,
+      "maxCol": 11,
+      "rows": [
+        {
+          "row": 0,
+          "count": 12,
+          "cols": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        },
+        {
+          "row": 1,
+          "count": 12,
+          "cols": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        },
+        {
+          "row": 2,
+          "count": 12,
+          "cols": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        },
+        {
+          "row": 3,
+          "count": 12,
+          "cols": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        },
+        {
+          "row": 4,
+          "count": 12,
+          "cols": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        },
+        {
+          "row": 5,
+          "count": 12,
+          "cols": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        }
+      ],
+      "tiles": [
+        {
+          "row": 0,
+          "col": 0,
+          "path": "public/tiles/shire/r0-c0.png"
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "path": "public/tiles/shire/r0-c1.png"
+        },
+        {
+          "row": 0,
+          "col": 2,
+          "path": "public/tiles/shire/r0-c2.png"
+        },
+        {
+          "row": 0,
+          "col": 3,
+          "path": "public/tiles/shire/r0-c3.png"
+        },
+        {
+          "row": 0,
+          "col": 4,
+          "path": "public/tiles/shire/r0-c4.png"
+        },
+        {
+          "row": 0,
+          "col": 5,
+          "path": "public/tiles/shire/r0-c5.png"
+        },
+        {
+          "row": 0,
+          "col": 6,
+          "path": "public/tiles/shire/r0-c6.png"
+        },
+        {
+          "row": 0,
+          "col": 7,
+          "path": "public/tiles/shire/r0-c7.png"
+        },
+        {
+          "row": 0,
+          "col": 8,
+          "path": "public/tiles/shire/r0-c8.png"
+        },
+        {
+          "row": 0,
+          "col": 9,
+          "path": "public/tiles/shire/r0-c9.png"
+        },
+        {
+          "row": 0,
+          "col": 10,
+          "path": "public/tiles/shire/r0-c10.png"
+        },
+        {
+          "row": 0,
+          "col": 11,
+          "path": "public/tiles/shire/r0-c11.png"
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "path": "public/tiles/shire/r1-c0.png"
+        },
+        {
+          "row": 1,
+          "col": 1,
+          "path": "public/tiles/shire/r1-c1.png"
+        },
+        {
+          "row": 1,
+          "col": 2,
+          "path": "public/tiles/shire/r1-c2.png"
+        },
+        {
+          "row": 1,
+          "col": 3,
+          "path": "public/tiles/shire/r1-c3.png"
+        },
+        {
+          "row": 1,
+          "col": 4,
+          "path": "public/tiles/shire/r1-c4.png"
+        },
+        {
+          "row": 1,
+          "col": 5,
+          "path": "public/tiles/shire/r1-c5.png"
+        },
+        {
+          "row": 1,
+          "col": 6,
+          "path": "public/tiles/shire/r1-c6.png"
+        },
+        {
+          "row": 1,
+          "col": 7,
+          "path": "public/tiles/shire/r1-c7.png"
+        },
+        {
+          "row": 1,
+          "col": 8,
+          "path": "public/tiles/shire/r1-c8.png"
+        },
+        {
+          "row": 1,
+          "col": 9,
+          "path": "public/tiles/shire/r1-c9.png"
+        },
+        {
+          "row": 1,
+          "col": 10,
+          "path": "public/tiles/shire/r1-c10.png"
+        },
+        {
+          "row": 1,
+          "col": 11,
+          "path": "public/tiles/shire/r1-c11.png"
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "path": "public/tiles/shire/r2-c0.png"
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "path": "public/tiles/shire/r2-c1.png"
+        },
+        {
+          "row": 2,
+          "col": 2,
+          "path": "public/tiles/shire/r2-c2.png"
+        },
+        {
+          "row": 2,
+          "col": 3,
+          "path": "public/tiles/shire/r2-c3.png"
+        },
+        {
+          "row": 2,
+          "col": 4,
+          "path": "public/tiles/shire/r2-c4.png"
+        },
+        {
+          "row": 2,
+          "col": 5,
+          "path": "public/tiles/shire/r2-c5.png"
+        },
+        {
+          "row": 2,
+          "col": 6,
+          "path": "public/tiles/shire/r2-c6.png"
+        },
+        {
+          "row": 2,
+          "col": 7,
+          "path": "public/tiles/shire/r2-c7.png"
+        },
+        {
+          "row": 2,
+          "col": 8,
+          "path": "public/tiles/shire/r2-c8.png"
+        },
+        {
+          "row": 2,
+          "col": 9,
+          "path": "public/tiles/shire/r2-c9.png"
+        },
+        {
+          "row": 2,
+          "col": 10,
+          "path": "public/tiles/shire/r2-c10.png"
+        },
+        {
+          "row": 2,
+          "col": 11,
+          "path": "public/tiles/shire/r2-c11.png"
+        },
+        {
+          "row": 3,
+          "col": 0,
+          "path": "public/tiles/shire/r3-c0.png"
+        },
+        {
+          "row": 3,
+          "col": 1,
+          "path": "public/tiles/shire/r3-c1.png"
+        },
+        {
+          "row": 3,
+          "col": 2,
+          "path": "public/tiles/shire/r3-c2.png"
+        },
+        {
+          "row": 3,
+          "col": 3,
+          "path": "public/tiles/shire/r3-c3.png"
+        },
+        {
+          "row": 3,
+          "col": 4,
+          "path": "public/tiles/shire/r3-c4.png"
+        },
+        {
+          "row": 3,
+          "col": 5,
+          "path": "public/tiles/shire/r3-c5.png"
+        },
+        {
+          "row": 3,
+          "col": 6,
+          "path": "public/tiles/shire/r3-c6.png"
+        },
+        {
+          "row": 3,
+          "col": 7,
+          "path": "public/tiles/shire/r3-c7.png"
+        },
+        {
+          "row": 3,
+          "col": 8,
+          "path": "public/tiles/shire/r3-c8.png"
+        },
+        {
+          "row": 3,
+          "col": 9,
+          "path": "public/tiles/shire/r3-c9.png"
+        },
+        {
+          "row": 3,
+          "col": 10,
+          "path": "public/tiles/shire/r3-c10.png"
+        },
+        {
+          "row": 3,
+          "col": 11,
+          "path": "public/tiles/shire/r3-c11.png"
+        },
+        {
+          "row": 4,
+          "col": 0,
+          "path": "public/tiles/shire/r4-c0.png"
+        },
+        {
+          "row": 4,
+          "col": 1,
+          "path": "public/tiles/shire/r4-c1.png"
+        },
+        {
+          "row": 4,
+          "col": 2,
+          "path": "public/tiles/shire/r4-c2.png"
+        },
+        {
+          "row": 4,
+          "col": 3,
+          "path": "public/tiles/shire/r4-c3.png"
+        },
+        {
+          "row": 4,
+          "col": 4,
+          "path": "public/tiles/shire/r4-c4.png"
+        },
+        {
+          "row": 4,
+          "col": 5,
+          "path": "public/tiles/shire/r4-c5.png"
+        },
+        {
+          "row": 4,
+          "col": 6,
+          "path": "public/tiles/shire/r4-c6.png"
+        },
+        {
+          "row": 4,
+          "col": 7,
+          "path": "public/tiles/shire/r4-c7.png"
+        },
+        {
+          "row": 4,
+          "col": 8,
+          "path": "public/tiles/shire/r4-c8.png"
+        },
+        {
+          "row": 4,
+          "col": 9,
+          "path": "public/tiles/shire/r4-c9.png"
+        },
+        {
+          "row": 4,
+          "col": 10,
+          "path": "public/tiles/shire/r4-c10.png"
+        },
+        {
+          "row": 4,
+          "col": 11,
+          "path": "public/tiles/shire/r4-c11.png"
+        },
+        {
+          "row": 5,
+          "col": 0,
+          "path": "public/tiles/shire/r5-c0.png"
+        },
+        {
+          "row": 5,
+          "col": 1,
+          "path": "public/tiles/shire/r5-c1.png"
+        },
+        {
+          "row": 5,
+          "col": 2,
+          "path": "public/tiles/shire/r5-c2.png"
+        },
+        {
+          "row": 5,
+          "col": 3,
+          "path": "public/tiles/shire/r5-c3.png"
+        },
+        {
+          "row": 5,
+          "col": 4,
+          "path": "public/tiles/shire/r5-c4.png"
+        },
+        {
+          "row": 5,
+          "col": 5,
+          "path": "public/tiles/shire/r5-c5.png"
+        },
+        {
+          "row": 5,
+          "col": 6,
+          "path": "public/tiles/shire/r5-c6.png"
+        },
+        {
+          "row": 5,
+          "col": 7,
+          "path": "public/tiles/shire/r5-c7.png"
+        },
+        {
+          "row": 5,
+          "col": 8,
+          "path": "public/tiles/shire/r5-c8.png"
+        },
+        {
+          "row": 5,
+          "col": 9,
+          "path": "public/tiles/shire/r5-c9.png"
+        },
+        {
+          "row": 5,
+          "col": 10,
+          "path": "public/tiles/shire/r5-c10.png"
+        },
+        {
+          "row": 5,
+          "col": 11,
+          "path": "public/tiles/shire/r5-c11.png"
+        }
+      ]
+    }
+  ]
+}

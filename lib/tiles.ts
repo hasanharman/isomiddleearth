@@ -109,7 +109,5 @@ export const TILE_GROUPS = [
   },
 ] as const;
 
-export const TEX_WIDTH = 12;
-export const TEX_HEIGHT = 6;
 export const SPRITE_TILE_W = 130;
 export const SPRITE_TILE_H = 230;

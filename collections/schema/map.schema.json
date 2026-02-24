@@ -67,8 +67,8 @@
               "minItems": 2,
               "maxItems": 2,
               "prefixItems": [
-                { "type": "integer", "minimum": 0, "maximum": 5 },
-                { "type": "integer", "minimum": 0, "maximum": 11 }
+                { "type": "integer", "minimum": 0 },
+                { "type": "integer", "minimum": 0 }
               ]
             },
             {
@@ -76,8 +76,8 @@
               "minItems": 3,
               "maxItems": 3,
               "prefixItems": [
-                { "type": "integer", "minimum": 0, "maximum": 5 },
-                { "type": "integer", "minimum": 0, "maximum": 11 },
+                { "type": "integer", "minimum": 0 },
+                { "type": "integer", "minimum": 0 },
                 {
                   "type": "string",
                   "enum": [

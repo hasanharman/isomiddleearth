@@ -77,6 +77,40 @@ pnpm dev
 3. Right-click to erase tiles, and click-drag to paint quickly.
 4. Save/load maps locally or export your map as PNG.
 
+## Tile Assets
+
+- Runtime source: `public/tiles/<realm>/r<row>-c<col>.png`
+- Single tile sprite size: `130x230` pixels
+- Isometric placement footprint on canvas: `128x64` pixels
+- Optional index file: `public/tiles/manifest.json`
+
+### Character Overlays
+
+- Runtime source: `public/characters/<character-realm>/<character-id>.svg|png`
+- Character sprite canvas should also be `130x230` pixels (same as tile sprite canvas)
+- Recommended character figure footprint inside that canvas: around `44x88` pixels to `56x104` pixels
+- Anchor character feet near the tile anchor baseline (roughly the same visual base line as terrain sprites)
+- Characters render on top of terrain and occupy one tile cell
+- Included sample set: `public/characters/hobbits/hobbit-1.png` to `hobbit-8.png`
+
+### Add new tile items (flexible rows/cols)
+
+You can add any number of items per row. The app no longer assumes fixed `0..11` columns.
+
+1. Add tile PNG files with this naming pattern:
+   - `public/tiles/<realm>/r<row>-c<col>.png`
+   - Examples: `r0-c12.png`, `r0-c19.png`, `r1-c5.png`
+2. Register each tile in the picker config at `lib/tiles.ts`:
+   - Use the correct group `row` and tile `col`.
+   - You do not need to pad groups with `"Empty"` placeholders.
+   - You can add new groups with new `row` indices when needed.
+3. Restart the app (or refresh) and the tile will render in picker + canvas.
+
+Notes:
+
+- Runtime rendering supports variable row/col values and falls back to `r0-c0` if a specific tile image is missing.
+- Collection validation now accepts tile coordinates as non-negative integers (`row >= 0`, `col >= 0`).
+
 ## Collections
 
 Shared maps are available at `/collections`.
