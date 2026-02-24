@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import "./globals.css";
 import { inter } from "./fonts";
 
@@ -38,6 +40,8 @@ export default function RootLayout({
       <body className={inter.className}>
         {children}
         <GoogleAnalytics gaId="G-3J7N3BKGKM" />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

@@ -2,8 +2,10 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Coffee, Github, Heart, Menu, Twitter } from "lucide-react";
 import { HugeiconsIcon } from "@hugeicons/react";
+import { useShallow } from "zustand/react/shallow";
 import {
   GridTableIcon,
   Delete01Icon,
@@ -43,7 +45,7 @@ import {
   SelectLabel,
 } from "@/components/ui/select";
 import { TEXTURE_PLACES, type TexturePlaceId } from "@/lib/textures";
-import type { TileCoord, SavedState } from "@/lib/store";
+import type { TileCoord } from "@/lib/store";
 
 const REALMS = new Set<string>([
   "shire",
@@ -139,19 +141,27 @@ export default function Toolbar() {
     gridSize,
     map,
     setGridSize,
-    savedStates,
-    saveState,
-    loadState,
     loadSnapshot,
-    deleteState,
     initMap,
     location,
     setLocation,
     undo,
     canUndo,
-  } = useMapStore();
+  } = useMapStore(
+    useShallow((state) => ({
+      gridSize: state.gridSize,
+      map: state.map,
+      setGridSize: state.setGridSize,
+      loadSnapshot: state.loadSnapshot,
+      initMap: state.initMap,
+      location: state.location,
+      setLocation: state.setLocation,
+      undo: state.undo,
+      canUndo: state.canUndo,
+    })),
+  );
 
-  const [saveName, setSaveName] = useState("");
+  const [saveName] = useState("");
   const [pendingSize, setPendingSize] = useState(gridSize);
   const [jsonNotice, setJsonNotice] = useState<string | null>(null);
   const [jsonError, setJsonError] = useState<string | null>(null);
@@ -171,12 +181,6 @@ export default function Toolbar() {
     link.download = `isoshire-${Date.now()}.png`;
     link.href = dataUrl;
     link.click();
-  };
-
-  const handleSave = () => {
-    if (!saveName.trim()) return;
-    saveState(saveName.trim());
-    setSaveName("");
   };
 
   const buildExportPayload = (
@@ -220,18 +224,6 @@ export default function Toolbar() {
     downloadJson(payload, `${payload.id}.json`);
     setJsonError(null);
     setJsonNotice("Exported current map as JSON.");
-  };
-
-  const handleExportSavedJson = (savedState: SavedState) => {
-    const payload = buildExportPayload(
-      savedState.name,
-      savedState.map,
-      savedState.gridSize,
-      savedState.location ?? "shire",
-    );
-    downloadJson(payload, `${payload.id}.json`);
-    setJsonError(null);
-    setJsonNotice(`Exported ${savedState.name} as JSON.`);
   };
 
   const handleImportJsonClick = () => {
@@ -301,7 +293,7 @@ export default function Toolbar() {
   return (
     <div className="flex items-center gap-1 border-b bg-background px-2 py-2 sm:gap-2 sm:px-4">
       <Link href="/" className="mr-1 flex shrink-0 items-center gap-2 sm:mr-4">
-        <img src="/logo.png" alt="Isoshire" className="w-10 object-contain" />
+        <Image src="/logo.png" alt="Isoshire" width={40} height={40} className="w-10 object-contain" />
         <h1
           className={`hidden text-3xl font-bold md:block ${bilboSwashCaps.className}`}
         >
