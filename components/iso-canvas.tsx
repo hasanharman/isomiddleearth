@@ -8,17 +8,32 @@ import {
   MIXED_TEXTURE_PLACE_ID,
   TEXTURE_PLACES,
 } from "@/lib/textures";
+import {
+  CHARACTERS,
+  getCharacterPath,
+  isCharacterId,
+} from "@/lib/characters";
 
 export default function IsoCanvas() {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const bgRef = useRef<HTMLCanvasElement>(null);
   const fgRef = useRef<HTMLCanvasElement>(null);
   const tileCacheRef = useRef<Map<string, HTMLImageElement>>(new Map());
+  const characterCacheRef = useRef<Map<string, HTMLImageElement>>(new Map());
   const isPlacingRef = useRef(false);
   const [displayScale, setDisplayScale] = useState(1);
 
-  const { map, gridSize, activeTool, setTile, clearTile, location } =
-    useMapStore();
+  const {
+    map,
+    characterMap,
+    gridSize,
+    activeTool,
+    activeCharacterTool,
+    setTile,
+    setCharacter,
+    clearAt,
+    location,
+  } = useMapStore();
 
   const tileWidth = 128;
   const tileHeight = 64;
@@ -104,6 +119,31 @@ export default function IsoCanvas() {
     [location, originX, originY, tileWidth, tileHeight],
   );
 
+  const drawCharacterTile = useCallback(
+    (ctx: CanvasRenderingContext2D, x: number, y: number, characterId: string | null) => {
+      if (!characterId) return;
+      const characterPath = getCharacterPath(characterId);
+      if (!characterPath) return;
+      const character = characterCacheRef.current.get(characterPath);
+      if (!character) return;
+
+      ctx.save();
+      ctx.translate(
+        originX + (y - x) * (tileWidth / 2),
+        originY + (x + y) * (tileHeight / 2),
+      );
+      ctx.drawImage(
+        character,
+        -SPRITE_TILE_W / 2,
+        -130,
+        SPRITE_TILE_W,
+        SPRITE_TILE_H,
+      );
+      ctx.restore();
+    },
+    [originX, originY, tileWidth, tileHeight],
+  );
+
   const drawMap = useCallback(() => {
     const bg = bgRef.current?.getContext("2d");
     if (!bg) return;
@@ -111,9 +151,10 @@ export default function IsoCanvas() {
     for (let i = 0; i < gridSize; i++) {
       for (let j = 0; j < gridSize; j++) {
         drawImageTile(bg, i, j, map[i][j][0], map[i][j][1], map[i][j][2]);
+        drawCharacterTile(bg, i, j, characterMap[i][j]);
       }
     }
-  }, [map, gridSize, canvasWidth, canvasHeight, drawImageTile]);
+  }, [map, characterMap, gridSize, canvasWidth, canvasHeight, drawImageTile, drawCharacterTile]);
 
   const getTileCoordinates = useCallback(() => {
     const coordKeys = new Set<string>();
@@ -143,19 +184,37 @@ export default function IsoCanvas() {
     });
   }, [map]);
 
-  // Load all tile assets used by the current realm mode.
+  const getCharacterIdsToPreload = useCallback(() => {
+    const characterIds = new Set<string>();
+    for (const character of CHARACTERS) {
+      characterIds.add(character.id);
+    }
+    for (const row of characterMap) {
+      for (const characterId of row) {
+        if (typeof characterId === "string" && isCharacterId(characterId)) {
+          characterIds.add(characterId);
+        }
+      }
+    }
+    return Array.from(characterIds);
+  }, [characterMap]);
+
+  // Load all tile and character assets used by the current mode.
   useEffect(() => {
     let cancelled = false;
-    const loadTile = (path: string) =>
+    const loadAsset = (
+      path: string,
+      cache: { current: Map<string, HTMLImageElement> },
+    ) =>
       new Promise<void>((resolve, reject) => {
-        if (tileCacheRef.current.has(path)) {
+        if (cache.current.has(path)) {
           resolve();
           return;
         }
         const img = new Image();
         img.src = path;
         img.onload = () => {
-          tileCacheRef.current.set(path, img);
+          cache.current.set(path, img);
           resolve();
         };
         img.onerror = () => reject(new Error(path));
@@ -175,12 +234,21 @@ export default function IsoCanvas() {
       ),
     );
 
-    Promise.allSettled(tilePaths.map((path) => loadTile(path))).then((results) => {
+    const characterPaths = getCharacterIdsToPreload()
+      .map((characterId) => getCharacterPath(characterId))
+      .filter((path): path is string => Boolean(path));
+
+    const loads = [
+      ...tilePaths.map((path) => loadAsset(path, tileCacheRef)),
+      ...characterPaths.map((path) => loadAsset(path, characterCacheRef)),
+    ];
+
+    Promise.allSettled(loads).then((results) => {
       if (cancelled) return;
       const failed = results.filter((result) => result.status === "rejected");
       if (failed.length > 0) {
         console.error(
-          `Failed to load ${failed.length} tile asset(s) for location: ${location}`,
+          `Failed to load ${failed.length} asset(s) for location: ${location}`,
         );
       }
       drawMap();
@@ -189,7 +257,7 @@ export default function IsoCanvas() {
     return () => {
       cancelled = true;
     };
-  }, [location, getTileCoordinates, drawMap]);
+  }, [location, getTileCoordinates, getCharacterIdsToPreload, drawMap]);
 
   // Redraw on map/grid changes
   useEffect(() => {
@@ -215,13 +283,25 @@ export default function IsoCanvas() {
     ctx.restore();
   };
 
+  const paintAt = useCallback(
+    (x: number, y: number) => {
+      if (activeCharacterTool === null || !isCharacterId(activeCharacterTool)) {
+        setTile(x, y, activeTool);
+        return;
+      }
+
+      setCharacter(x, y, activeCharacterTool);
+    },
+    [activeCharacterTool, activeTool, setCharacter, setTile],
+  );
+
   const handleClick = (e: React.MouseEvent<HTMLCanvasElement>) => {
     const pos = getPosition(e);
     if (pos.x >= 0 && pos.x < gridSize && pos.y >= 0 && pos.y < gridSize) {
       if (e.button === 2) {
-        clearTile(pos.x, pos.y);
+        clearAt(pos.x, pos.y);
       } else {
-        setTile(pos.x, pos.y, activeTool);
+        paintAt(pos.x, pos.y);
       }
       isPlacingRef.current = true;
     }
@@ -235,9 +315,9 @@ export default function IsoCanvas() {
     if (isPlacingRef.current) {
       if (pos.x >= 0 && pos.x < gridSize && pos.y >= 0 && pos.y < gridSize) {
         if (e.buttons === 2) {
-          clearTile(pos.x, pos.y);
+          clearAt(pos.x, pos.y);
         } else if (e.buttons === 1) {
-          setTile(pos.x, pos.y, activeTool);
+          paintAt(pos.x, pos.y);
         }
       }
     }

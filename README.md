@@ -84,6 +84,15 @@ pnpm dev
 - Isometric placement footprint on canvas: `128x64` pixels
 - Optional index file: `public/tiles/manifest.json`
 
+### Character Overlays
+
+- Runtime source: `public/characters/<character-realm>/<character-id>.svg|png`
+- Character sprite canvas should also be `130x230` pixels (same as tile sprite canvas)
+- Recommended character figure footprint inside that canvas: around `44x88` pixels to `56x104` pixels
+- Anchor character feet near the tile anchor baseline (roughly the same visual base line as terrain sprites)
+- Characters render on top of terrain and occupy one tile cell
+- Included sample set: `public/characters/hobbits/hobbit-1.png` to `hobbit-8.png`
+
 ### Add new tile items (flexible rows/cols)
 
 You can add any number of items per row. The app no longer assumes fixed `0..11` columns.
