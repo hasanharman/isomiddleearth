@@ -26,7 +26,7 @@
 
 ![Iso Middle Earth Preview](public/demo.png)
 
-Live: [isomiddleearth.vercel.app](https://isomiddleearth.vercel.app/)
+Live: [https://isomiddleearth.com/](https://isomiddleearth.com/)
 
 ## Features
 
