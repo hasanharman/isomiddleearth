@@ -68,6 +68,12 @@ export const CHARACTERS: CharacterDefinition[] = [
     realm: "hobbits",
     path: "/characters/hobbits/hobbit-8.png",
   },
+   {
+    id: "hobbit-9",
+    label: "Hobbit 9",
+    realm: "hobbits",
+    path: "/characters/hobbits/hobbit-9.png",
+  },
 ];
 
 const characterById = new Map(CHARACTERS.map((character) => [character.id, character]));
