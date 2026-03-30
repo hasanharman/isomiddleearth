@@ -88,7 +88,11 @@ export default function CollectionMapCard({ map }: { map: CollectionMap }) {
             {map.gridSize}x{map.gridSize} · {map.location}
           </p>
           <div className="space-y-2">
-            <Link href={`/?collection=${map.id}`} className={actionButtonClass}>
+            <Link
+              href={`/?collection=${map.id}`}
+              prefetch={false}
+              className={actionButtonClass}
+            >
               Open in builder
             </Link>
             <a

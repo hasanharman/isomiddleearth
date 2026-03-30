@@ -1,5 +1,6 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
+import { cache } from "react";
 import type { TileCoord } from "@/lib/store";
 import { DEFAULT_TEXTURE_PLACE, type TexturePlaceId } from "@/lib/textures";
 
@@ -112,7 +113,7 @@ const toCollectionMap = (input: unknown): CollectionMap | null => {
   };
 };
 
-export async function getCollectionMaps(): Promise<CollectionMap[]> {
+const readCollectionMaps = cache(async (): Promise<CollectionMap[]> => {
   const entries = await fs.readdir(MAPS_DIR, { withFileTypes: true }).catch(() => []);
 
   const files = entries
@@ -130,39 +131,49 @@ export async function getCollectionMaps(): Promise<CollectionMap[]> {
   );
 
   return maps.filter((m): m is CollectionMap => Boolean(m));
+});
+
+export async function getCollectionMaps(): Promise<CollectionMap[]> {
+  return readCollectionMaps();
 }
+
+const readCollectionMapById = cache(
+  async (id: string): Promise<CollectionMap | null> => {
+    if (!isSafeMapId(id)) return null;
+
+    try {
+      const directPath = path.join(MAPS_DIR, `${id}.json`);
+      const directRaw = await fs.readFile(directPath, "utf8").catch(() => null);
+      if (directRaw) {
+        const parsed = JSON.parse(directRaw) as unknown;
+        const directMap = toCollectionMap(parsed);
+        if (directMap) return directMap;
+      }
+
+      const entries = await fs.readdir(MAPS_DIR, { withFileTypes: true });
+      const jsonFiles = entries.filter(
+        (entry) => entry.isFile() && entry.name.endsWith(".json"),
+      );
+
+      for (const entry of jsonFiles) {
+        const filePath = path.join(MAPS_DIR, entry.name);
+        const raw = await fs.readFile(filePath, "utf8");
+        const parsed = JSON.parse(raw) as unknown;
+        const map = toCollectionMap(parsed);
+        if (map && map.id === id) {
+          return map;
+        }
+      }
+
+      return null;
+    } catch {
+      return null;
+    }
+  },
+);
 
 export async function getCollectionMapById(
   id: string,
 ): Promise<CollectionMap | null> {
-  if (!isSafeMapId(id)) return null;
-
-  try {
-    const directPath = path.join(MAPS_DIR, `${id}.json`);
-    const directRaw = await fs.readFile(directPath, "utf8").catch(() => null);
-    if (directRaw) {
-      const parsed = JSON.parse(directRaw) as unknown;
-      const directMap = toCollectionMap(parsed);
-      if (directMap) return directMap;
-    }
-
-    const entries = await fs.readdir(MAPS_DIR, { withFileTypes: true });
-    const jsonFiles = entries.filter(
-      (entry) => entry.isFile() && entry.name.endsWith(".json"),
-    );
-
-    for (const entry of jsonFiles) {
-      const filePath = path.join(MAPS_DIR, entry.name);
-      const raw = await fs.readFile(filePath, "utf8");
-      const parsed = JSON.parse(raw) as unknown;
-      const map = toCollectionMap(parsed);
-      if (map && map.id === id) {
-        return map;
-      }
-    }
-
-    return null;
-  } catch {
-    return null;
-  }
+  return readCollectionMapById(id);
 }
